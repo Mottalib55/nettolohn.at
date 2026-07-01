@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <rect width="100" height="100" rx="16" fill="#dc2626"/>
+  <rect y="0" width="100" height="33" rx="0" fill="#dc2626"/>
+  <rect y="33" width="100" height="34" fill="#ffffff"/>
+  <rect y="67" width="100" height="33" fill="#dc2626"/>
+  <text x="50" y="58" font-family="system-ui, sans-serif" font-size="24" font-weight="900" fill="#1d4ed8" text-anchor="middle" dominant-baseline="middle">AT €</text>
+</svg>

@@ -1,0 +1,27 @@
+# nettolohn.at — Brutto-Netto-Rechner Österreich
+
+> Kostenloser Online-Gehaltsrechner für Österreich 2026. Berechnung von Nettogehalt mit Sozialversicherung, Lohnsteuer, Sonderzahlungen (13./14. Gehalt), Familienbonus Plus und allen Absetzbeträgen.
+
+## Funktionen
+
+- Brutto-Netto-Berechnung für österreichische Arbeitnehmer
+- Sozialversicherungsbeiträge (KV 3,87%, PV 10,25%, AV 0-3%)
+- Progressive Einkommensteuer nach Tarifstufen 2026
+- Sonderzahlungen (13./14. Gehalt) mit 6% Pauschalbesteuerung
+- Familienbonus Plus (€ 2.000/Kind/Jahr unter 18)
+- Alleinverdienerabsetzbetrag
+- Verkehrsabsetzbetrag (€ 463/Jahr)
+- Pendlerpauschale
+- Höchstbeitragsgrundlage (€ 6.060/Monat)
+
+## Seiten
+
+- [Startseite & Rechner](https://nettolohn.at/)
+- [FAQ](https://nettolohn.at/faq/)
+- [Impressum](https://nettolohn.at/impressum/)
+- [Datenschutz](https://nettolohn.at/datenschutz/)
+
+## Quellen
+
+- Bundesministerium für Finanzen: https://www.bmf.gv.at
+- Sozialversicherung: https://www.sozialversicherung.at

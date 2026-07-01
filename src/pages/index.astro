@@ -1,0 +1,221 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Calculator from '../components/Calculator';
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Wie berechne ich mein Nettogehalt in Österreich?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Vom Bruttogehalt werden zunächst die Sozialversicherungsbeiträge (Kranken-, Pensions- und Arbeitslosenversicherung) abgezogen. Auf das verbleibende Einkommen wird die Lohnsteuer nach den progressiven Tarifstufen berechnet. Absetzbeträge wie der Verkehrsabsetzbetrag reduzieren die Steuerlast."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Was sind die Sozialversicherungsbeiträge in Österreich 2026?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Die Arbeitnehmeranteile betragen: Krankenversicherung 3,87%, Pensionsversicherung 10,25%, und Arbeitslosenversicherung 0-3% je nach Einkommen. Die Beiträge werden bis zur Höchstbeitragsgrundlage von 6.060 € monatlich berechnet."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Wie werden das 13. und 14. Gehalt in Österreich besteuert?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Die Sonderzahlungen (13. und 14. Gehalt) werden in Österreich begünstigt besteuert. Nach Abzug der Sozialversicherungsbeiträge und eines Freibetrags von 620 € wird ein pauschaler Steuersatz von 6% angewendet."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Was ist der Familienbonus Plus?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Der Familienbonus Plus ist ein Steuerabsetzbetrag von 2.000 € pro Kind und Jahr (unter 18 Jahre) bzw. 700 € für Kinder ab 18 Jahren. Er reduziert direkt die zu zahlende Einkommensteuer."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Was ist die Höchstbeitragsgrundlage?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Die Höchstbeitragsgrundlage 2026 beträgt 6.060 € pro Monat. Einkommen über diesem Betrag ist nicht mehr sozialversicherungspflichtig, was bedeutet, dass die SV-Beiträge gedeckelt sind."
+      }
+    }
+  ]
+};
+---
+
+<Layout title="Brutto-Netto-Rechner Österreich 2026 — nettolohn.at" description="Kostenloser Brutto-Netto-Rechner für Österreich 2026. Berechnen Sie Ihr Nettogehalt mit Sozialversicherung, Lohnsteuer, Sonderzahlungen, Familienbonus Plus und allen Absetzbeträgen.">
+
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-primary via-primary-dark to-gray-900 text-white py-16 md:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
+        Brutto-Netto-Rechner<br />
+        <span class="text-accent-light">Österreich 2026</span>
+      </h1>
+      <p class="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto mb-8">
+        Berechnen Sie kostenlos Ihr Nettogehalt. Mit Sozialversicherung, Lohnsteuer, 
+        13. &amp; 14. Gehalt, Familienbonus Plus und allen aktuellen Absetzbeträgen.
+      </p>
+      <a
+        href="#rechner"
+        class="inline-block bg-accent hover:bg-accent-dark text-gray-900 font-bold py-4 px-8 rounded-xl text-lg transition-colors shadow-lg hover:shadow-xl"
+      >
+        Jetzt Nettolohn berechnen
+      </a>
+    </div>
+  </section>
+
+  <!-- Calculator Section -->
+  <section class="py-12 md:py-16 px-4 sm:px-6 lg:px-8 bg-gray-50">
+    <Calculator client:load />
+  </section>
+
+  <!-- Content Section -->
+  <section class="py-12 md:py-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto prose prose-lg prose-gray">
+
+      <h2 class="text-3xl font-bold text-gray-900 mb-6">Wie funktioniert die Gehaltsberechnung in Österreich?</h2>
+
+      <p>
+        In Österreich ist die Berechnung des Nettogehalts aus dem Bruttogehalt ein mehrstufiger Prozess, der verschiedene Abzüge und Begünstigungen berücksichtigt. Das österreichische Steuersystem gilt als eines der komplexesten in Europa, bietet aber gleichzeitig zahlreiche Möglichkeiten zur Steueroptimierung. Unser Brutto-Netto-Rechner berücksichtigt alle wesentlichen Faktoren der Gehaltsberechnung für das Jahr 2026.
+      </p>
+
+      <p>
+        Die Gehaltsberechnung in Österreich unterscheidet sich grundlegend von vielen anderen Ländern durch das System der 14 Monatsgehälter. Neben den 12 regulären Monatsgehältern erhalten Arbeitnehmer in Österreich ein 13. Gehalt (Urlaubsgeld) und ein 14. Gehalt (Weihnachtsgeld), die steuerlich begünstigt sind. Diese Besonderheit macht Österreich zu einem attraktiven Standort für Arbeitnehmer.
+      </p>
+
+      <h2 class="text-3xl font-bold text-gray-900 mb-6 mt-12">Sozialversicherung (SV) in Österreich</h2>
+
+      <p>
+        Der erste Abzug vom Bruttogehalt sind die Sozialversicherungsbeiträge. In Österreich gliedert sich die Sozialversicherung für Arbeitnehmer in drei Hauptbereiche, die direkt vom Gehalt abgezogen werden:
+      </p>
+
+      <h3 class="text-2xl font-bold text-gray-800 mt-8 mb-4">Krankenversicherung (KV) — 3,87 %</h3>
+      <p>
+        Die Krankenversicherung sichert den Zugang zum österreichischen Gesundheitssystem. Der Arbeitnehmeranteil beträgt 3,87 % des Bruttogehalts. Der Arbeitgeber zahlt zusätzlich seinen Anteil. Die Krankenversicherung finanziert ärztliche Behandlungen, Medikamente, Krankenhausaufenthalte und weitere Gesundheitsleistungen. In Österreich sind damit praktisch alle medizinisch notwendigen Leistungen abgedeckt.
+      </p>
+
+      <h3 class="text-2xl font-bold text-gray-800 mt-8 mb-4">Pensionsversicherung (PV) — 10,25 %</h3>
+      <p>
+        Der größte Einzelposten bei den Sozialversicherungsbeiträgen ist die Pensionsversicherung mit 10,25 %. Diese Beiträge bilden die Grundlage für die spätere Alterspension. Das österreichische Pensionssystem basiert auf dem Umlageverfahren, bei dem die aktuellen Beiträge zur Finanzierung der laufenden Pensionen verwendet werden. Die Höhe der späteren Pension richtet sich nach den eingezahlten Beiträgen und den Versicherungsjahren.
+      </p>
+
+      <h3 class="text-2xl font-bold text-gray-800 mt-8 mb-4">Arbeitslosenversicherung (AV) — 0 % bis 3 %</h3>
+      <p>
+        Die Arbeitslosenversicherung in Österreich ist gestaffelt nach dem Einkommen. Bei Gehältern bis 2.093 € monatlich entfällt der AV-Beitrag vollständig, was Geringverdiener entlastet. Zwischen 2.093 € und 2.282 € beträgt der Satz 1 %, zwischen 2.282 € und 2.471 € sind es 2 %, und ab 2.471 € gilt der volle Satz von 3 %. Diese Staffelung ist eine österreichische Besonderheit und sorgt für eine soziale Abfederung bei niedrigen Einkommen.
+      </p>
+
+      <h3 class="text-2xl font-bold text-gray-800 mt-8 mb-4">Höchstbeitragsgrundlage</h3>
+      <p>
+        Ein wichtiger Aspekt der österreichischen Sozialversicherung ist die Höchstbeitragsgrundlage. Im Jahr 2026 beträgt diese 6.060 € pro Monat. Das bedeutet, dass Sozialversicherungsbeiträge nur bis zu diesem Betrag berechnet werden. Einkommen über der Höchstbeitragsgrundlage ist nicht mehr sozialversicherungspflichtig. Für Gutverdiener mit einem Gehalt über 6.060 € bedeutet dies eine relative Entlastung bei den SV-Beiträgen, da der prozentuale Anteil der SV am Gesamtgehalt sinkt.
+      </p>
+
+      <h2 class="text-3xl font-bold text-gray-900 mb-6 mt-12">Lohnsteuer (Einkommensteuer) in Österreich 2026</h2>
+
+      <p>
+        Nach Abzug der Sozialversicherungsbeiträge wird auf das verbleibende Einkommen die Lohnsteuer berechnet. Österreich verwendet ein progressives Steuersystem mit sieben Tarifstufen. Das bedeutet: Je höher das Einkommen, desto höher der Steuersatz — allerdings nur für den Teil des Einkommens, der in die jeweilige Stufe fällt.
+      </p>
+
+      <div class="overflow-x-auto my-8">
+        <table class="w-full border-collapse bg-white rounded-xl overflow-hidden shadow-sm">
+          <thead>
+            <tr class="bg-primary text-white">
+              <th class="px-4 py-3 text-left">Einkommensstufe</th>
+              <th class="px-4 py-3 text-right">Steuersatz</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-100">
+            <tr><td class="px-4 py-3">Bis € 12.816</td><td class="px-4 py-3 text-right font-semibold">0 %</td></tr>
+            <tr class="bg-gray-50"><td class="px-4 py-3">€ 12.816 – € 20.818</td><td class="px-4 py-3 text-right font-semibold">20 %</td></tr>
+            <tr><td class="px-4 py-3">€ 20.818 – € 34.513</td><td class="px-4 py-3 text-right font-semibold">30 %</td></tr>
+            <tr class="bg-gray-50"><td class="px-4 py-3">€ 34.513 – € 66.612</td><td class="px-4 py-3 text-right font-semibold">40 %</td></tr>
+            <tr><td class="px-4 py-3">€ 66.612 – € 99.266</td><td class="px-4 py-3 text-right font-semibold">48 %</td></tr>
+            <tr class="bg-gray-50"><td class="px-4 py-3">€ 99.266 – € 1.000.000</td><td class="px-4 py-3 text-right font-semibold">50 %</td></tr>
+            <tr><td class="px-4 py-3">Über € 1.000.000</td><td class="px-4 py-3 text-right font-semibold">55 %</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        Der Grundfreibetrag von 12.816 € jährlich stellt sicher, dass Geringverdiener keine Einkommensteuer zahlen müssen. Der Spitzensteuersatz von 55 % gilt nur für den Teil des Einkommens, der 1.000.000 € übersteigt, und betrifft somit nur sehr wenige Steuerpflichtige. Die meisten Arbeitnehmer in Österreich befinden sich in den Stufen zwischen 20 % und 48 %.
+      </p>
+
+      <h2 class="text-3xl font-bold text-gray-900 mb-6 mt-12">Sonderzahlungen: 13. und 14. Gehalt</h2>
+
+      <p>
+        Eine der größten Besonderheiten des österreichischen Gehaltsystems sind die Sonderzahlungen — das 13. Gehalt (Urlaubsgeld, meist im Juni) und das 14. Gehalt (Weihnachtsgeld, meist im November). Diese zusätzlichen Gehälter werden steuerlich begünstigt behandelt, was einen erheblichen finanziellen Vorteil darstellt.
+      </p>
+
+      <p>
+        Anstatt mit dem regulären progressiven Steuertarif besteuert zu werden, unterliegen die Sonderzahlungen einem pauschalen Steuersatz von nur 6 %. Zusätzlich wird ein Freibetrag von 620 € abgezogen, bevor die Steuer berechnet wird. Sozialversicherungsbeiträge fallen allerdings auch auf die Sonderzahlungen an. Diese steuerliche Begünstigung der Sonderzahlungen ist international nahezu einzigartig und macht einen wesentlichen Teil des österreichischen Wohlstandsmodells aus.
+      </p>
+
+      <p>
+        Für einen Arbeitnehmer mit einem monatlichen Bruttogehalt von 3.000 € bedeutet dies, dass er pro Jahr 14 × 3.000 € = 42.000 € brutto erhält, wobei die zwei Sonderzahlungen deutlich günstiger besteuert werden als die regulären Monatsgehälter.
+      </p>
+
+      <h2 class="text-3xl font-bold text-gray-900 mb-6 mt-12">Absetzbeträge und Steuerbegünstigungen</h2>
+
+      <h3 class="text-2xl font-bold text-gray-800 mt-8 mb-4">Verkehrsabsetzbetrag</h3>
+      <p>
+        Jeder Arbeitnehmer in Österreich hat automatisch Anspruch auf den Verkehrsabsetzbetrag in Höhe von 463 € pro Jahr. Dieser Absetzbetrag wird direkt von der berechneten Lohnsteuer abgezogen und reduziert somit die tatsächliche Steuerlast. Der Verkehrsabsetzbetrag soll die Kosten des Arbeitswegs pauschal abgelten und steht allen Arbeitnehmern unabhängig von der tatsächlichen Entfernung zum Arbeitsplatz zu.
+      </p>
+
+      <h3 class="text-2xl font-bold text-gray-800 mt-8 mb-4">Familienbonus Plus</h3>
+      <p>
+        Der Familienbonus Plus ist einer der bedeutendsten Absetzbeträge für Familien in Österreich. Er beträgt 2.000 € pro Kind und Jahr für Kinder unter 18 Jahren und 700 € pro Kind für volljährige Kinder, die noch in Ausbildung sind. Der Familienbonus Plus wird direkt von der Einkommensteuer abgezogen und kann die Steuerlast erheblich reduzieren. Bei mehreren Kindern kann der Familienbonus Plus die gesamte Lohnsteuer auf null reduzieren.
+      </p>
+
+      <p>
+        Der Familienbonus Plus kann zwischen den Elternteilen aufgeteilt werden. In der Regel macht es steuerlich Sinn, den Bonus dem Elternteil mit dem höheren Einkommen zuzuordnen, um den maximalen Nutzen zu erzielen. Bei Alleinverdienern wird der gesamte Betrag automatisch berücksichtigt.
+      </p>
+
+      <h3 class="text-2xl font-bold text-gray-800 mt-8 mb-4">Alleinverdienerabsetzbetrag</h3>
+      <p>
+        Alleinverdiener oder Alleinerzieher mit mindestens einem Kind haben Anspruch auf den Alleinverdienerabsetzbetrag. Dieser beträgt 520 € pro Jahr bei einem Kind, 704 € bei zwei Kindern und erhöht sich um 232 € für jedes weitere Kind. Voraussetzung ist, dass der Partner kein oder nur ein geringes Einkommen erzielt (unter 6.312 € pro Jahr). Der Alleinverdienerabsetzbetrag ist ein wichtiges Instrument der Familienförderung und sorgt dafür, dass Einverdiener-Familien steuerlich entlastet werden.
+      </p>
+
+      <h3 class="text-2xl font-bold text-gray-800 mt-8 mb-4">Pendlerpauschale</h3>
+      <p>
+        Die Pendlerpauschale berücksichtigt die Kosten für den täglichen Arbeitsweg. Sie wird je nach Entfernung zwischen Wohnung und Arbeitsstätte gewährt und kann als kleine oder große Pendlerpauschale beansprucht werden. Die kleine Pendlerpauschale gilt, wenn die Benützung eines öffentlichen Verkehrsmittels zumutbar ist, die große Pendlerpauschale, wenn dies nicht der Fall ist. Die Pendlerpauschale reduziert das zu versteuernde Einkommen und führt somit zu einer niedrigeren Lohnsteuer.
+      </p>
+
+      <h2 class="text-3xl font-bold text-gray-900 mb-6 mt-12">E-Card-Serviceentgelt</h2>
+
+      <p>
+        Das E-Card-Serviceentgelt ist eine jährliche Gebühr von 12,95 € für die elektronische Gesundheitskarte (e-Card). Diese Gebühr wird einmal jährlich vom Gehalt abgezogen und dient zur Finanzierung der e-Card-Infrastruktur. Obwohl der Betrag gering ist, wird er in einer korrekten Brutto-Netto-Berechnung berücksichtigt.
+      </p>
+
+      <h2 class="text-3xl font-bold text-gray-900 mb-6 mt-12">Vergleich: Österreich im internationalen Kontext</h2>
+
+      <p>
+        Im europäischen Vergleich liegt die Steuer- und Abgabenbelastung in Österreich im oberen Mittelfeld. Allerdings erhalten Arbeitnehmer dafür umfangreiche soziale Leistungen, darunter eine hochwertige Gesundheitsversorgung, ein starkes Pensionssystem und großzügige Familienförderungen. Das System der 14 Monatsgehälter mit der begünstigten Besteuerung der Sonderzahlungen ist ein einzigartiger Vorteil des österreichischen Steuerrechts.
+      </p>
+
+      <p>
+        Im Vergleich zu Deutschland ist die Steuerbelastung in Österreich für mittlere Einkommen ähnlich, jedoch profitieren österreichische Arbeitnehmer von den steuerlich begünstigten Sonderzahlungen und dem Familienbonus Plus. Im Vergleich zur Schweiz ist die Abgabenbelastung in Österreich höher, dafür sind die Sozialleistungen umfassender. Im Vergleich zu den skandinavischen Ländern ist die Steuerlast in Österreich etwas niedriger, wobei das Leistungsniveau des Sozialstaats vergleichbar ist.
+      </p>
+
+      <h2 class="text-3xl font-bold text-gray-900 mb-6 mt-12">Tipps zur Optimierung Ihres Nettogehalts</h2>
+
+      <p>
+        Es gibt verschiedene legale Möglichkeiten, das Nettogehalt in Österreich zu optimieren. Erstens sollten Sie alle zustehenden Absetzbeträge in Anspruch nehmen, insbesondere den Familienbonus Plus und die Pendlerpauschale. Zweitens kann eine Arbeitnehmerveranlagung (Steuerausgleich) zu Rückzahlungen führen, wenn bestimmte Ausgaben wie Werbungskosten, Sonderausgaben oder außergewöhnliche Belastungen geltend gemacht werden. Drittens bieten Sachbezüge wie Jobtickets oder betriebliche Vorsorge steuerliche Vorteile.
+      </p>
+
+      <p>
+        Nutzen Sie unseren Brutto-Netto-Rechner, um verschiedene Szenarien durchzuspielen und die Auswirkungen von Gehaltserhöhungen, Kindern oder Steueränderungen auf Ihr Nettogehalt zu simulieren. Die Berechnung erfolgt nach den aktuellen Werten für 2026 und berücksichtigt alle relevanten Abzüge und Begünstigungen.
+      </p>
+
+    </div>
+  </section>
+
+</Layout>
