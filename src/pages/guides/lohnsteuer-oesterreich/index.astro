@@ -1,0 +1,175 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://nettolohn.at/" },
+    { "@type": "ListItem", "position": 2, "name": "Ratgeber", "item": "https://nettolohn.at/guides/" },
+    { "@type": "ListItem", "position": 3, "name": "Lohnsteuer in Österreich", "item": "https://nettolohn.at/guides/lohnsteuer-oesterreich/" }
+  ]
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Wie hoch ist der Lohnsteuersatz in Österreich 2025?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In Österreich gilt ein progressiver Einkommensteuertarif mit Stufen von 0 % (bis 12.816 €), 20 % (bis 20.818 €), 30 % (bis 34.513 €), 40 % (bis 66.612 €), 48 % (bis 99.266 €), 50 % (bis 1.000.000 €) und 55 % (über 1.000.000 €)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Was ist der Unterschied zwischen Grenzsteuersatz und Durchschnittssteuersatz?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Der Grenzsteuersatz gibt an, mit welchem Prozentsatz der nächste verdiente Euro besteuert wird. Der Durchschnittssteuersatz ist der Anteil der gesamten Lohnsteuer am Bruttoeinkommen. Durch die Progression ist der Durchschnittssteuersatz immer niedriger als der Grenzsteuersatz."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Wird das 13. und 14. Gehalt mit der normalen Lohnsteuer besteuert?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nein. Die Sonderzahlungen (13. und 14. Gehalt) werden in Österreich begünstigt besteuert: Die ersten 620 € sind steuerfrei, der Betrag darüber wird pauschal mit 6 % versteuert (bis zu einem Jahressechstel). Das ist deutlich günstiger als der reguläre Steuertarif."
+      }
+    }
+  ]
+};
+---
+
+<Layout
+  title="Lohnsteuer in Österreich 2025/2026 - Steuerstufen, Berechnung & Tipps | nettolohn.at"
+  description="Alle Lohnsteuer-Stufen in Österreich 2025/2026 erklärt: Grenzsteuersätze, Berechnung, Absetzbeträge und praktische Tipps zur Steueroptimierung."
+>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- Breadcrumb -->
+  <nav class="max-w-4xl mx-auto px-4 pt-6 text-sm text-gray-500" aria-label="Breadcrumb">
+    <ol class="flex flex-wrap items-center gap-1">
+      <li><a href="/" class="hover:text-primary transition-colors">Startseite</a></li>
+      <li class="before:content-['/'] before:mx-1"><a href="/guides/" class="hover:text-primary transition-colors">Ratgeber</a></li>
+      <li class="before:content-['/'] before:mx-1 text-gray-900 font-medium">Lohnsteuer in Österreich</li>
+    </ol>
+  </nav>
+
+  <article class="max-w-4xl mx-auto px-4 py-10">
+    <!-- Prose Content -->
+    <div class="prose prose-lg max-w-none prose-headings:text-gray-900 prose-a:text-secondary prose-a:underline hover:prose-a:text-primary">
+      <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-6">Lohnsteuer in Österreich 2025/2026 - Steuerstufen, Berechnung und Tipps</h1>
+
+      <p class="text-lg text-gray-700 leading-relaxed">Die Lohnsteuer ist für die meisten Arbeitnehmerinnen und Arbeitnehmer in Österreich der größte Abzug vom Bruttogehalt. Dennoch wissen viele nicht genau, wie die Lohnsteuer berechnet wird, welche Steuerstufen gelten und welche Absetzbeträge ihnen zustehen. In diesem umfassenden Ratgeber erklären wir Ihnen alles, was Sie über die Lohnsteuer in Österreich wissen müssen - verständlich, aktuell und mit praktischen Beispielen.</p>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">Was ist die Lohnsteuer?</h2>
+      <p>Die Lohnsteuer ist eine besondere Erhebungsform der Einkommensteuer, die direkt vom Arbeitgeber einbehalten und an das Finanzamt abgeführt wird. Sie wird auf das laufende Bruttoeinkommen berechnet, nachdem die Sozialversicherungsbeiträge abgezogen wurden. Die Bemessungsgrundlage ist also nicht das volle Bruttogehalt, sondern das um die SV-Beiträge reduzierte Einkommen.</p>
+      <p>In Österreich erfolgt die Besteuerung progressiv - das bedeutet, dass höhere Einkommensteile mit höheren Steuersätzen belastet werden. Dieses System soll für eine gerechte Verteilung der Steuerlast sorgen: Wer mehr verdient, zahlt prozentual mehr Steuern.</p>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">Die Einkommensteuerstufen 2025/2026</h2>
+      <p>Seit der ökosozialen Steuerreform und den laufenden Anpassungen im Rahmen der kalten Progression gelten für 2025 folgende Tarifstufen:</p>
+
+      <div class="overflow-x-auto my-6">
+        <table class="min-w-full border border-gray-200 rounded-lg text-sm">
+          <thead class="bg-gray-100">
+            <tr>
+              <th class="px-4 py-3 text-left font-semibold">Einkommensbereich (jährlich)</th>
+              <th class="px-4 py-3 text-left font-semibold">Grenzsteuersatz</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-200">
+            <tr><td class="px-4 py-3">bis 12.816 €</td><td class="px-4 py-3">0 %</td></tr>
+            <tr><td class="px-4 py-3">12.816 € bis 20.818 €</td><td class="px-4 py-3">20 %</td></tr>
+            <tr><td class="px-4 py-3">20.818 € bis 34.513 €</td><td class="px-4 py-3">30 %</td></tr>
+            <tr><td class="px-4 py-3">34.513 € bis 66.612 €</td><td class="px-4 py-3">40 %</td></tr>
+            <tr><td class="px-4 py-3">66.612 € bis 99.266 €</td><td class="px-4 py-3">48 %</td></tr>
+            <tr><td class="px-4 py-3">99.266 € bis 1.000.000 €</td><td class="px-4 py-3">50 %</td></tr>
+            <tr><td class="px-4 py-3">über 1.000.000 €</td><td class="px-4 py-3">55 %</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>Wichtig zu verstehen: Diese Steuersätze gelten nicht für das gesamte Einkommen, sondern immer nur für den jeweiligen Einkommensteil. Wer beispielsweise 40.000 € brutto pro Jahr verdient (nach Abzug der SV-Beiträge), zahlt auf die ersten 12.816 € keine Steuer, auf den nächsten Teil 20 %, dann 30 % und nur auf den Anteil über 34.513 € den Satz von 40 %.</p>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">Abschaffung der kalten Progression</h2>
+      <p>Seit 2023 werden die Steuerstufen in Österreich jährlich an die Inflation angepasst. Zwei Drittel der Inflationsrate werden automatisch auf die Tarifstufen und bestimmte Absetzbeträge angerechnet, das verbleibende Drittel wird von der Bundesregierung politisch verteilt. Diese Maßnahme verhindert, dass Gehaltserhöhungen, die lediglich die Inflation ausgleichen, zu einer höheren realen Steuerlast führen - die sogenannte „kalte Progression".</p>
+      <p>Vor dieser Reform stiegen die Steuerstufen nicht automatisch, sodass Arbeitnehmer trotz gleichbleibender Kaufkraft in höhere Steuerstufen rutschten. Die Abschaffung der kalten Progression bedeutet eine spürbare Entlastung, insbesondere für mittlere Einkommen.</p>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">Grenzsteuersatz vs. Durchschnittssteuersatz</h2>
+      <p>Ein häufiges Missverständnis betrifft den Unterschied zwischen Grenz- und Durchschnittssteuersatz. Der <strong>Grenzsteuersatz</strong> gibt an, mit welchem Prozentsatz der nächste zusätzlich verdiente Euro besteuert wird. Wenn Sie beispielsweise 35.000 € verdienen, liegt Ihr Grenzsteuersatz bei 40 %. Das bedeutet aber nicht, dass Ihr gesamtes Einkommen mit 40 % besteuert wird.</p>
+      <p>Der <strong>Durchschnittssteuersatz</strong> (auch effektiver Steuersatz) ist der Anteil der tatsächlich gezahlten Lohnsteuer am gesamten steuerpflichtigen Einkommen. Durch die Progression und den Steuerfreibetrag liegt dieser immer deutlich unter dem Grenzsteuersatz. Bei einem Jahreseinkommen von 35.000 € liegt der effektive Steuersatz bei etwa 15 bis 17 %, obwohl der Grenzsteuersatz bereits 40 % beträgt.</p>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">Wichtige Absetzbeträge</h2>
+      <p>Absetzbeträge reduzieren die berechnete Lohnsteuer direkt (nicht die Bemessungsgrundlage). Die wichtigsten Absetzbeträge für Arbeitnehmer in Österreich sind:</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>Verkehrsabsetzbetrag:</strong> 463 € pro Jahr, steht allen aktiven Arbeitnehmern zu und wird automatisch berücksichtigt.</li>
+        <li><strong>Zuschlag zum Verkehrsabsetzbetrag:</strong> Weitere 752 € für niedrige Einkommen (bis ca. 16.000 € jährlich), einschleifend bis 24.500 €.</li>
+        <li><strong>Alleinverdiener-/Alleinerzieherabsetzbetrag:</strong> 572 € pro Jahr (mit einem Kind), steigend mit der Kinderzahl.</li>
+        <li><strong>Familienbonus Plus:</strong> Bis zu 2.000 € pro Kind und Jahr (bis 18 Jahre), danach 650 €.</li>
+        <li><strong>Pendlereuro:</strong> 2 € pro Kilometer Arbeitsweg und Jahr.</li>
+      </ul>
+      <p>Diese Absetzbeträge können über das Formular L34 beim Arbeitgeber geltend gemacht werden (Freibetragsbescheid) oder im Rahmen der Arbeitnehmerveranlagung (Steuerausgleich) beim Finanzamt.</p>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">Berechnung der monatlichen Lohnsteuer - ein Beispiel</h2>
+      <p>Nehmen wir ein Bruttomonatsgehalt von 3.500 € an (14 Mal pro Jahr). Daraus ergibt sich ein Jahresbrutto von 49.000 €. Nach Abzug der SV-Beiträge (ca. 18,12 % = 631,20 € monatlich) bleibt eine monatliche Bemessungsgrundlage von etwa 2.868,80 € bzw. jährlich 34.425,60 € (für die laufenden Bezüge, also 12 Monate).</p>
+      <p>Die Berechnung der Jahres-Lohnsteuer erfolgt dann stufenweise:</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li>0 % auf die ersten 12.816 € = 0 €</li>
+        <li>20 % auf 12.816 € bis 20.818 € (= 8.002 €) = 1.600,40 €</li>
+        <li>30 % auf 20.818 € bis 34.425,60 € (= 13.607,60 €) = 4.082,28 €</li>
+      </ul>
+      <p>Zwischensumme: 5.682,68 € Jahres-Lohnsteuer vor Absetzbeträgen. Nach Abzug des Verkehrsabsetzbetrags (463 €) ergibt sich eine Jahres-Lohnsteuer von etwa 5.219,68 € bzw. monatlich rund 435 €.</p>
+      <p>Das Nettogehalt ergibt sich aus dem Bruttogehalt abzüglich SV-Beiträge und Lohnsteuer: 3.500 € − 631,20 € − 435 € = ca. 2.433,80 € netto monatlich (ohne Berücksichtigung weiterer Absetzbeträge oder Sachbezüge).</p>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">Sonderzahlungen und die begünstigte Besteuerung</h2>
+      <p>Eine österreichische Besonderheit ist die steuerliche Begünstigung des 13. und 14. Gehalts. Diese Sonderzahlungen (Urlaubsgeld und Weihnachtsgeld) werden nicht nach dem regulären Steuertarif versteuert, sondern mit einem Pauschalsatz von 6 % - wobei die ersten 620 € sogar steuerfrei bleiben. Diese Regelung macht die Sonderzahlungen netto besonders attraktiv und ist ein wesentlicher Vorteil des österreichischen Gehaltsystems.</p>
+      <p>Die begünstigte Besteuerung gilt allerdings nur bis zu einem Jahressechstel der laufenden Bezüge. Bei sehr hohen Einkommen wird der darüber hinausgehende Teil der Sonderzahlungen zum regulären Tarif versteuert.</p>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">Tipps zur Optimierung der Lohnsteuer</h2>
+      <p>Es gibt verschiedene legale Möglichkeiten, die Lohnsteuerlast zu reduzieren:</p>
+      <ol class="list-decimal pl-6 space-y-2">
+        <li><strong>Arbeitnehmerveranlagung durchführen:</strong> Viele Arbeitnehmer haben Anspruch auf Rückerstattungen, die sie ohne Steuerausgleich verschenken - insbesondere Werbungskosten, Sonderausgaben und außergewöhnliche Belastungen.</li>
+        <li><strong>Familienbonus Plus beantragen:</strong> Eltern können bis zu 2.000 € pro Kind und Jahr als Absetzbetrag geltend machen.</li>
+        <li><strong>Pendlerpauschale und Pendlereuro nutzen:</strong> Wenn die Entfernung zum Arbeitsplatz mindestens 20 km beträgt oder öffentliche Verkehrsmittel unzumutbar sind.</li>
+        <li><strong>Freibetragsbescheid beantragen:</strong> Damit werden absetzbare Beträge bereits monatlich bei der Gehaltsabrechnung berücksichtigt, statt erst bei der jährlichen Veranlagung.</li>
+        <li><strong>Fortbildungskosten absetzen:</strong> Berufsbedingte Aus- und Weiterbildungskosten sind als Werbungskosten absetzbar.</li>
+      </ol>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">Häufig gestellte Fragen (FAQ)</h2>
+
+      <h3 class="text-xl font-semibold mt-6 mb-2">Wie hoch ist der Lohnsteuersatz in Österreich 2025?</h3>
+      <p>In Österreich gilt ein progressiver Einkommensteuertarif mit Stufen von 0 % (bis 12.816 €), 20 % (bis 20.818 €), 30 % (bis 34.513 €), 40 % (bis 66.612 €), 48 % (bis 99.266 €), 50 % (bis 1.000.000 €) und 55 % (über 1.000.000 €). Der tatsächliche Durchschnittssteuersatz liegt durch die Progression deutlich niedriger als der Grenzsteuersatz.</p>
+
+      <h3 class="text-xl font-semibold mt-6 mb-2">Was ist der Unterschied zwischen Grenzsteuersatz und Durchschnittssteuersatz?</h3>
+      <p>Der Grenzsteuersatz gibt an, mit welchem Prozentsatz der nächste verdiente Euro besteuert wird. Der Durchschnittssteuersatz ist der Anteil der gesamten Lohnsteuer am Bruttoeinkommen. Durch die Progression ist der Durchschnittssteuersatz immer niedriger als der Grenzsteuersatz. Bei einem steuerpflichtigen Einkommen von 40.000 € liegt der Grenzsteuersatz bei 40 %, der Durchschnittssteuersatz jedoch nur bei etwa 18 %.</p>
+
+      <h3 class="text-xl font-semibold mt-6 mb-2">Wird das 13. und 14. Gehalt mit der normalen Lohnsteuer besteuert?</h3>
+      <p>Nein. Die Sonderzahlungen (13. und 14. Gehalt) werden in Österreich begünstigt besteuert: Die ersten 620 € sind steuerfrei, der Betrag darüber wird pauschal mit 6 % versteuert (bis zu einem Jahressechstel). Das ist deutlich günstiger als der reguläre Steuertarif und macht die Sonderzahlungen netto besonders wertvoll.</p>
+    </div>
+
+    <!-- Verwandte Tools -->
+    <div class="mt-12 bg-blue-50 border border-blue-200 rounded-xl p-6">
+      <h2 class="text-lg font-bold text-secondary mb-3">Verwandte Tools</h2>
+      <ul class="space-y-2 text-sm">
+        <li><a href="/" class="text-secondary underline hover:text-primary transition-colors">Brutto-Netto-Rechner Österreich</a> - Berechnen Sie Ihr Nettogehalt inkl. aller Abzüge</li>
+        <li><a href="/guides/sozialversicherung-beitraege/" class="text-secondary underline hover:text-primary transition-colors">Sozialversicherungsbeiträge-Ratgeber</a> - Alles zu den SV-Abzügen</li>
+        <li><a href="/guides/13-14-gehalt/" class="text-secondary underline hover:text-primary transition-colors">13. und 14. Gehalt erklärt</a> - Sonderzahlungen verstehen</li>
+      </ul>
+    </div>
+
+    <!-- Quellen -->
+    <div class="mt-8 border-t border-gray-200 pt-6">
+      <h2 class="text-lg font-bold text-gray-900 mb-3">Quellen</h2>
+      <ul class="space-y-1 text-sm text-gray-600">
+        <li>Bundesministerium für Finanzen - <a href="https://www.bmf.gv.at" class="text-secondary underline hover:text-primary" target="_blank" rel="noopener noreferrer">bmf.gv.at</a></li>
+        <li>Einkommensteuergesetz 1988 (EStG 1988), §&nbsp;33</li>
+        <li>Arbeiterkammer Österreich - <a href="https://www.arbeiterkammer.at" class="text-secondary underline hover:text-primary" target="_blank" rel="noopener noreferrer">arbeiterkammer.at</a></li>
+        <li>Wirtschaftskammer Österreich - <a href="https://www.wko.at" class="text-secondary underline hover:text-primary" target="_blank" rel="noopener noreferrer">wko.at</a></li>
+      </ul>
+    </div>
+  </article>
+</Layout>

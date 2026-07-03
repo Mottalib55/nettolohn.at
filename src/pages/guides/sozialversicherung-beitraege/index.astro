@@ -1,0 +1,185 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://nettolohn.at/" },
+    { "@type": "ListItem", "position": 2, "name": "Ratgeber", "item": "https://nettolohn.at/guides/" },
+    { "@type": "ListItem", "position": 3, "name": "Sozialversicherungsbeiträge", "item": "https://nettolohn.at/guides/sozialversicherung-beitraege/" }
+  ]
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Wie hoch sind die Sozialversicherungsbeiträge für Arbeitnehmer in Österreich?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Arbeitnehmer zahlen insgesamt ca. 18,12 % des Bruttogehalts an SV-Beiträgen: 3,87 % Krankenversicherung, 10,25 % Pensionsversicherung, 2,95 % Arbeitslosenversicherung, 1,00 % Arbeiterkammerumlage und 0,05 % Wohnbauförderungsbeitrag (DN-Anteil). Für Angestellte beträgt der Beitrag 18,07 %."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Was ist die Höchstbeitragsgrundlage 2025?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Die monatliche Höchstbeitragsgrundlage für 2025 beträgt 6.060 € (für laufende Bezüge). Auf Einkommensteile über dieser Grenze werden keine SV-Beiträge mehr berechnet. Für Sonderzahlungen gilt eine jährliche Höchstbeitragsgrundlage von 12.120 €."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Müssen Geringfügig Beschäftigte Sozialversicherung zahlen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Geringfügig Beschäftigte (unter 518,44 € monatlich in 2025) sind nur unfallversichert. Sie können sich jedoch freiwillig in der Kranken- und Pensionsversicherung selbst versichern (Kosten: ca. 73 € monatlich). Die freiwillige Selbstversicherung ist empfehlenswert, um Pensionszeiten zu erwerben."
+      }
+    }
+  ]
+};
+---
+
+<Layout
+  title="Sozialversicherungsbeiträge in Österreich 2025 - Beiträge, Höchstgrenze & Berechnung | nettolohn.at"
+  description="Alles zu den Sozialversicherungsbeiträgen in Österreich: Kranken-, Pensions-, Arbeitslosenversicherung, Höchstbeitragsgrundlage und Berechnung der SV-Abzüge."
+>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <nav class="max-w-4xl mx-auto px-4 pt-6 text-sm text-gray-500" aria-label="Breadcrumb">
+    <ol class="flex flex-wrap items-center gap-1">
+      <li><a href="/" class="hover:text-primary transition-colors">Startseite</a></li>
+      <li class="before:content-['/'] before:mx-1"><a href="/guides/" class="hover:text-primary transition-colors">Ratgeber</a></li>
+      <li class="before:content-['/'] before:mx-1 text-gray-900 font-medium">Sozialversicherungsbeiträge</li>
+    </ol>
+  </nav>
+
+  <article class="max-w-4xl mx-auto px-4 py-10">
+    <div class="prose prose-lg max-w-none prose-headings:text-gray-900 prose-a:text-secondary prose-a:underline hover:prose-a:text-primary">
+      <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-6">Sozialversicherungsbeiträge in Österreich 2025 - Der vollständige Überblick</h1>
+
+      <p class="text-lg text-gray-700 leading-relaxed">Neben der Lohnsteuer sind die Sozialversicherungsbeiträge der zweitgrößte Abzugsposten vom Bruttogehalt in Österreich. Doch wie setzen sich die Beiträge zusammen, wer zahlt was und wo liegt die Höchstbeitragsgrundlage? Dieser Ratgeber erklärt Ihnen das österreichische Sozialversicherungssystem und alle relevanten Beitragssätze für 2025.</p>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">Das österreichische Sozialversicherungssystem im Überblick</h2>
+      <p>Österreich hat ein umfassendes Pflichtversicherungssystem, das auf vier Säulen basiert: Krankenversicherung, Unfallversicherung, Pensionsversicherung und Arbeitslosenversicherung. Jeder unselbständig Beschäftigte ist automatisch pflichtversichert. Die Beiträge werden zu einem Teil vom Arbeitnehmer (Dienstnehmeranteil) und zu einem Teil vom Arbeitgeber (Dienstgeberanteil) getragen.</p>
+      <p>Die zuständigen Träger sind die Österreichische Gesundheitskasse (ÖGK) für die meisten Arbeitnehmer, die Versicherungsanstalt öffentlich Bediensteter, Eisenbahnen und Bergbau (BVAEB) für Beamte, sowie die Sozialversicherungsanstalt der Selbständigen (SVS) für Gewerbetreibende und Freiberufler.</p>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">Beitragssätze für Angestellte 2025</h2>
+      <p>Die SV-Beiträge für Angestellte setzen sich wie folgt zusammen:</p>
+
+      <div class="overflow-x-auto my-6">
+        <table class="min-w-full border border-gray-200 rounded-lg text-sm">
+          <thead class="bg-gray-100">
+            <tr>
+              <th class="px-4 py-3 text-left font-semibold">Beitragsart</th>
+              <th class="px-4 py-3 text-left font-semibold">Dienstnehmer (DN)</th>
+              <th class="px-4 py-3 text-left font-semibold">Dienstgeber (DG)</th>
+              <th class="px-4 py-3 text-left font-semibold">Gesamt</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-200">
+            <tr><td class="px-4 py-3">Krankenversicherung</td><td class="px-4 py-3">3,87 %</td><td class="px-4 py-3">3,78 %</td><td class="px-4 py-3">7,65 %</td></tr>
+            <tr><td class="px-4 py-3">Pensionsversicherung</td><td class="px-4 py-3">10,25 %</td><td class="px-4 py-3">12,55 %</td><td class="px-4 py-3">22,80 %</td></tr>
+            <tr><td class="px-4 py-3">Arbeitslosenversicherung</td><td class="px-4 py-3">2,95 %</td><td class="px-4 py-3">2,95 %</td><td class="px-4 py-3">5,90 %</td></tr>
+            <tr><td class="px-4 py-3">Unfallversicherung</td><td class="px-4 py-3">0,00 %</td><td class="px-4 py-3">1,10 %</td><td class="px-4 py-3">1,10 %</td></tr>
+            <tr class="bg-gray-50 font-semibold"><td class="px-4 py-3">SV-Beiträge Summe</td><td class="px-4 py-3">17,07 %</td><td class="px-4 py-3">20,38 %</td><td class="px-4 py-3">37,45 %</td></tr>
+            <tr><td class="px-4 py-3">Arbeiterkammerumlage (AK)</td><td class="px-4 py-3">0,50 %</td><td class="px-4 py-3">-</td><td class="px-4 py-3">0,50 %</td></tr>
+            <tr><td class="px-4 py-3">Wohnbauförderungsbeitrag</td><td class="px-4 py-3">0,50 %</td><td class="px-4 py-3">0,50 %</td><td class="px-4 py-3">1,00 %</td></tr>
+            <tr class="bg-red-50 font-bold"><td class="px-4 py-3">DN-Gesamtbelastung</td><td class="px-4 py-3">18,07 %</td><td class="px-4 py-3">-</td><td class="px-4 py-3">-</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>Der Dienstnehmer-Gesamtanteil für Angestellte beträgt also 18,07 % des Bruttogehalts. Bei Arbeitern liegt der Satz geringfügig höher bei 18,12 %, da die Krankenversicherungsbeiträge leicht abweichen.</p>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">Die Höchstbeitragsgrundlage 2025</h2>
+      <p>SV-Beiträge werden nur bis zur sogenannten Höchstbeitragsgrundlage berechnet. Für 2025 beträgt diese:</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>Monatlich (laufende Bezüge):</strong> 6.060 €</li>
+        <li><strong>Jährlich (Sonderzahlungen):</strong> 12.120 €</li>
+        <li><strong>Täglich:</strong> 202 €</li>
+      </ul>
+      <p>Das bedeutet: Wenn Sie beispielsweise 8.000 € brutto monatlich verdienen, werden SV-Beiträge nur auf 6.060 € berechnet. Auf den darüber liegenden Betrag von 1.940 € fallen keine weiteren SV-Beiträge an. Dies begünstigt Besserverdiener, da der SV-Beitragssatz ab dieser Grenze effektiv sinkt.</p>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">Ermäßigte Beiträge für niedrige Einkommen</h2>
+      <p>Für Arbeitnehmer mit geringem Einkommen gibt es eine Staffelung bei den Arbeitslosenversicherungsbeiträgen:</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li>Bis 1.951 € brutto monatlich: 0 % Arbeitslosenversicherung (DN-Anteil)</li>
+        <li>1.951 € bis 2.128 € brutto monatlich: 1 % Arbeitslosenversicherung</li>
+        <li>2.128 € bis 2.306 € brutto monatlich: 2 % Arbeitslosenversicherung</li>
+        <li>Ab 2.306 € brutto monatlich: 2,95 % (regulärer Satz)</li>
+      </ul>
+      <p>Diese Staffelung entlastet Geringverdiener spürbar und erhöht deren Nettoeinkommen. Die Differenz wird nicht vom Arbeitgeber nachgezahlt, sondern ist ein echtes Entlastungsinstrument.</p>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">Geringfügigkeitsgrenze und freiwillige Versicherung</h2>
+      <p>Geringfügig Beschäftigte (monatliches Entgelt unter der Geringfügigkeitsgrenze von 518,44 € im Jahr 2025) sind grundsätzlich nur unfallversichert. Sie zahlen keine Kranken-, Pensions- oder Arbeitslosenversicherungsbeiträge.</p>
+      <p>Allerdings haben geringfügig Beschäftigte die Möglichkeit, sich freiwillig in der Kranken- und Pensionsversicherung selbst zu versichern. Die monatlichen Kosten dafür betragen ca. 73 € (2025). Diese freiwillige Versicherung ist besonders empfehlenswert, um:</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li>Pensionsversicherungszeiten zu erwerben</li>
+        <li>Einen eigenen Krankenversicherungsschutz zu haben</li>
+        <li>Anspruch auf Krankengeld zu erwerben</li>
+      </ul>
+      <p>Werden mehrere geringfügige Beschäftigungen ausgeübt und überschreitet das Gesamtentgelt die Geringfügigkeitsgrenze, tritt volle Pflichtversicherung ein. Die Nachverrechnung der SV-Beiträge erfolgt dann über die Sozialversicherung.</p>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">SV-Beiträge auf Sonderzahlungen</h2>
+      <p>Auch auf die Sonderzahlungen (13. und 14. Gehalt) werden Sozialversicherungsbeiträge fällig. Die Beitragssätze sind dabei grundsätzlich gleich wie für die laufenden Bezüge. Allerdings entfallen bei den Sonderzahlungen die Beiträge zur Arbeitslosenversicherung sowie der Wohnbauförderungsbeitrag.</p>
+      <p>Die Höchstbeitragsgrundlage für Sonderzahlungen beträgt jährlich 12.120 € (also das Doppelte des monatlichen Wertes). Da die meisten Arbeitnehmer maximal zwei Sonderzahlungen pro Jahr erhalten, wird dieser Höchstwert nur bei Bruttogehältern über 6.060 € relevant.</p>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">Berechnung an einem konkreten Beispiel</h2>
+      <p>Angenommen, Sie sind Angestellte/r und verdienen 3.000 € brutto monatlich:</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li>Krankenversicherung: 3.000 € × 3,87 % = 116,10 €</li>
+        <li>Pensionsversicherung: 3.000 € × 10,25 % = 307,50 €</li>
+        <li>Arbeitslosenversicherung: 3.000 € × 2,95 % = 88,50 €</li>
+        <li>Arbeiterkammerumlage: 3.000 € × 0,50 % = 15,00 €</li>
+        <li>Wohnbauförderungsbeitrag: 3.000 € × 0,50 % = 15,00 €</li>
+      </ul>
+      <p><strong>Gesamt DN-Beitrag: 542,10 € (18,07 %)</strong></p>
+      <p>Von den 3.000 € brutto verbleiben also 2.457,90 € als Bemessungsgrundlage für die Lohnsteuer. Nach Abzug der Lohnsteuer ergibt sich dann das monatliche Nettogehalt.</p>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">Unterschiede zwischen Arbeitern und Angestellten</h2>
+      <p>Seit der Harmonisierung der Sozialversicherung gibt es nur noch minimale Unterschiede zwischen Arbeitern und Angestellten. Die wesentlichen Beitragssätze sind nahezu identisch, wobei der Krankenversicherungsbeitrag für Arbeiter geringfügig höher liegt (3,87 % DN-Anteil gleich, aber DG-Anteil etwas höher). Beide Gruppen sind seit 2020 bei der Österreichischen Gesundheitskasse (ÖGK) versichert, wodurch die frühere Trennung zwischen Gebietskrankenkassen weitgehend aufgehoben wurde.</p>
+      <p>Für Beamte und Vertragsbedienstete des öffentlichen Dienstes gelten teilweise abweichende Regelungen über die BVAEB. Auch bei Lehrlingen gibt es Sonderregelungen: Im ersten Lehrjahr zahlen Lehrlinge keine SV-Beiträge, ab dem zweiten Lehrjahr gelten ermäßigte Sätze. Freie Dienstnehmer unterliegen ebenfalls der Pflichtversicherung, wobei die Beitragssätze weitgehend jenen der Angestellten entsprechen.</p>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">Negativsteuer und SV-Rückerstattung</h2>
+      <p>Arbeitnehmer, deren Einkommen so gering ist, dass sie keine oder nur wenig Lohnsteuer zahlen, können im Rahmen der Arbeitnehmerveranlagung einen Teil der SV-Beiträge zurückerhalten. Diese sogenannte „SV-Rückerstattung" oder „Negativsteuer" beträgt bis zu 55 % bestimmter Werbungskosten und SV-Beiträge, maximal jedoch 463 € pro Jahr (Verkehrsabsetzbetrag) plus ggf. weitere Beträge für Pendler.</p>
+      <p>Die SV-Rückerstattung ist ein wichtiges Instrument, um auch Geringverdiener von der hohen SV-Beitragslast zu entlasten, und sollte bei der Arbeitnehmerveranlagung unbedingt berücksichtigt werden.</p>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">Häufig gestellte Fragen (FAQ)</h2>
+
+      <h3 class="text-xl font-semibold mt-6 mb-2">Wie hoch sind die Sozialversicherungsbeiträge für Arbeitnehmer in Österreich?</h3>
+      <p>Arbeitnehmer zahlen insgesamt ca. 18,07 % (Angestellte) bzw. 18,12 % (Arbeiter) des Bruttogehalts an SV-Beiträgen und Nebenabgaben. Dieser Betrag setzt sich aus Krankenversicherung (3,87 %), Pensionsversicherung (10,25 %), Arbeitslosenversicherung (2,95 %), Arbeiterkammerumlage (0,50 %) und Wohnbauförderungsbeitrag (0,50 %) zusammen.</p>
+
+      <h3 class="text-xl font-semibold mt-6 mb-2">Was ist die Höchstbeitragsgrundlage 2025?</h3>
+      <p>Die monatliche Höchstbeitragsgrundlage für 2025 beträgt 6.060 € für laufende Bezüge. Auf Einkommensteile über dieser Grenze werden keine SV-Beiträge mehr berechnet. Für Sonderzahlungen gilt eine jährliche Höchstbeitragsgrundlage von 12.120 €.</p>
+
+      <h3 class="text-xl font-semibold mt-6 mb-2">Müssen geringfügig Beschäftigte Sozialversicherung zahlen?</h3>
+      <p>Geringfügig Beschäftigte (unter 518,44 € monatlich in 2025) sind nur unfallversichert. Sie können sich jedoch freiwillig in der Kranken- und Pensionsversicherung selbst versichern (Kosten ca. 73 € monatlich). Die freiwillige Selbstversicherung ist besonders empfehlenswert, um Pensionszeiten zu erwerben und einen eigenen Krankenversicherungsschutz zu haben.</p>
+    </div>
+
+    <!-- Verwandte Tools -->
+    <div class="mt-12 bg-blue-50 border border-blue-200 rounded-xl p-6">
+      <h2 class="text-lg font-bold text-secondary mb-3">Verwandte Tools</h2>
+      <ul class="space-y-2 text-sm">
+        <li><a href="/" class="text-secondary underline hover:text-primary transition-colors">Brutto-Netto-Rechner Österreich</a> - Berechnen Sie Ihr Nettogehalt inkl. aller Abzüge</li>
+        <li><a href="/guides/lohnsteuer-oesterreich/" class="text-secondary underline hover:text-primary transition-colors">Lohnsteuer-Ratgeber</a> - Steuerstufen und Berechnung</li>
+        <li><a href="/guides/teilzeit-gehalt-berechnen/" class="text-secondary underline hover:text-primary transition-colors">Teilzeitgehalt berechnen</a> - SV-Beiträge bei Teilzeit</li>
+      </ul>
+    </div>
+
+    <!-- Quellen -->
+    <div class="mt-8 border-t border-gray-200 pt-6">
+      <h2 class="text-lg font-bold text-gray-900 mb-3">Quellen</h2>
+      <ul class="space-y-1 text-sm text-gray-600">
+        <li>Dachverband der Sozialversicherungsträger - <a href="https://www.sozialversicherung.at" class="text-secondary underline hover:text-primary" target="_blank" rel="noopener noreferrer">sozialversicherung.at</a></li>
+        <li>Allgemeines Sozialversicherungsgesetz (ASVG)</li>
+        <li>Österreichische Gesundheitskasse - <a href="https://www.gesundheitskasse.at" class="text-secondary underline hover:text-primary" target="_blank" rel="noopener noreferrer">gesundheitskasse.at</a></li>
+        <li>Arbeiterkammer Österreich - <a href="https://www.arbeiterkammer.at" class="text-secondary underline hover:text-primary" target="_blank" rel="noopener noreferrer">arbeiterkammer.at</a></li>
+      </ul>
+    </div>
+  </article>
+</Layout>

@@ -10,3 +10,5 @@ Allow: /
 
 User-agent: Amazonbot
 Allow: /
+
+Disallow: /*?*

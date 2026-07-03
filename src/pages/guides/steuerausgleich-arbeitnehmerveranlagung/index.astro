@@ -1,0 +1,206 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://nettolohn.at/" },
+    { "@type": "ListItem", "position": 2, "name": "Ratgeber", "item": "https://nettolohn.at/guides/" },
+    { "@type": "ListItem", "position": 3, "name": "Steuerausgleich & Arbeitnehmerveranlagung", "item": "https://nettolohn.at/guides/steuerausgleich-arbeitnehmerveranlagung/" }
+  ]
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Was ist der Unterschied zwischen Pflichtveranlagung und Antragsveranlagung?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Die Pflichtveranlagung ist gesetzlich vorgeschrieben, wenn bestimmte Voraussetzungen vorliegen (z. B. gleichzeitig zwei Dienstverhältnisse, Nebeneinkünfte über 730 €). Die Antragsveranlagung ist freiwillig und lohnt sich, wenn man eine Steuergutschrift erwartet (z. B. durch Werbungskosten, Sonderausgaben, Familienbonus Plus). Für die Antragsveranlagung hat man 5 Jahre Zeit."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Wie viel Geld bekommt man beim Steuerausgleich zurück?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Die Rückerstattung variiert stark und hängt von der individuellen Situation ab. Typische Rückerstattungen liegen zwischen 100 € und 1.500 € pro Jahr. Bei Familien mit Kindern (Familienbonus Plus), Pendlern (Pendlerpauschale) oder Arbeitnehmern mit hohen Werbungskosten kann die Rückerstattung auch deutlich höher ausfallen."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Wie lange hat man Zeit für den Steuerausgleich?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Für die freiwillige Arbeitnehmerveranlagung (Antragsveranlagung) haben Sie 5 Jahre Zeit. Das bedeutet: Im Jahr 2025 können Sie noch die Veranlagung für die Jahre 2020 bis 2024 einreichen. Für die Pflichtveranlagung gilt eine Frist bis 30. Juni des Folgejahres (bei elektronischer Einreichung bis 30. September)."
+      }
+    }
+  ]
+};
+---
+
+<Layout
+  title="Steuerausgleich Österreich 2025 - Arbeitnehmerveranlagung Schritt für Schritt | nettolohn.at"
+  description="Arbeitnehmerveranlagung in Österreich: Schritt-für-Schritt-Anleitung für FinanzOnline, absetzbare Kosten, Werbungskosten, Sonderausgaben und Tipps für maximale Rückerstattung."
+>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <nav class="max-w-4xl mx-auto px-4 pt-6 text-sm text-gray-500" aria-label="Breadcrumb">
+    <ol class="flex flex-wrap items-center gap-1">
+      <li><a href="/" class="hover:text-primary transition-colors">Startseite</a></li>
+      <li class="before:content-['/'] before:mx-1"><a href="/guides/" class="hover:text-primary transition-colors">Ratgeber</a></li>
+      <li class="before:content-['/'] before:mx-1 text-gray-900 font-medium">Steuerausgleich & Arbeitnehmerveranlagung</li>
+    </ol>
+  </nav>
+
+  <article class="max-w-4xl mx-auto px-4 py-10">
+    <div class="prose prose-lg max-w-none prose-headings:text-gray-900 prose-a:text-secondary prose-a:underline hover:prose-a:text-primary">
+      <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-6">Steuerausgleich in Österreich 2025 - Arbeitnehmerveranlagung leicht gemacht</h1>
+
+      <p class="text-lg text-gray-700 leading-relaxed">Jedes Jahr verschenken Hunderttausende Arbeitnehmerinnen und Arbeitnehmer in Österreich Geld, weil sie keinen Steuerausgleich machen. Die Arbeitnehmerveranlagung (umgangssprachlich „Steuerausgleich" oder „Jahresausgleich") ist in vielen Fällen mit einer Steuergutschrift verbunden - im Durchschnitt erhalten Arbeitnehmer etwa 350 bis 500 € zurück, in vielen Fällen deutlich mehr. In diesem Ratgeber erklären wir Ihnen Schritt für Schritt, wie Sie Ihren Steuerausgleich über FinanzOnline durchführen, welche Kosten Sie absetzen können und wie Sie Ihre Rückerstattung maximieren.</p>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">Was ist die Arbeitnehmerveranlagung?</h2>
+      <p>Die Arbeitnehmerveranlagung ist die jährliche Einkommensteuererklärung für Arbeitnehmer. Sie dient dazu, die im Laufe des Jahres einbehaltene Lohnsteuer mit der tatsächlich geschuldeten Einkommensteuer abzugleichen. Da die monatliche Lohnabrechnung nicht alle persönlichen Umstände berücksichtigen kann (z. B. Werbungskosten, Sonderausgaben, außergewöhnliche Belastungen), ergibt sich oft eine Differenz zugunsten des Arbeitnehmers.</p>
+      <p>Man unterscheidet zwei Arten der Arbeitnehmerveranlagung:</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>Antragsveranlagung (freiwillig):</strong> Sie stellen freiwillig einen Antrag, weil Sie eine Steuergutschrift erwarten. Sie haben dafür 5 Jahre Zeit. Stellt sich heraus, dass Sie nachzahlen müssten, wird der Antrag nicht durchgeführt (kein Risiko!).</li>
+        <li><strong>Pflichtveranlagung:</strong> In bestimmten Fällen sind Sie gesetzlich verpflichtet, eine Steuererklärung abzugeben - z. B. bei gleichzeitig zwei oder mehr Dienstverhältnissen, bei Nebeneinkünften über 730 € oder wenn das Finanzamt Sie dazu auffordert.</li>
+      </ul>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">Wann lohnt sich der Steuerausgleich?</h2>
+      <p>Die Arbeitnehmerveranlagung lohnt sich besonders in folgenden Situationen:</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>Kinder:</strong> Der Familienbonus Plus (bis 2.000 € pro Kind) und der Kindermehrbetrag können geltend gemacht werden.</li>
+        <li><strong>Pendler:</strong> Pendlerpauschale und Pendlereuro, die nicht bereits beim Arbeitgeber berücksichtigt wurden.</li>
+        <li><strong>Wechsel des Arbeitgebers:</strong> Bei einem Jobwechsel während des Jahres wird die Lohnsteuer oft zu hoch berechnet, da jeder Arbeitgeber separat abrechnet.</li>
+        <li><strong>Berufsbedingte Ausgaben:</strong> Werbungskosten über dem Pauschbetrag von 132 € (z. B. Fortbildung, Arbeitsmittel, Fachliteratur).</li>
+        <li><strong>Spenden und Kirchenbeiträge:</strong> Spenden an begünstigte Organisationen und Kirchenbeiträge sind als Sonderausgaben absetzbar.</li>
+        <li><strong>Krankheitskosten:</strong> Außergewöhnliche Belastungen wie Krankheitskosten, Behinderung oder Katastrophenschäden.</li>
+        <li><strong>Alleinverdiener/Alleinerzieher:</strong> Absetzbeträge, die nicht bereits beim Arbeitgeber berücksichtigt wurden.</li>
+        <li><strong>Niedriges Einkommen:</strong> SV-Rückerstattung (Negativsteuer) für Geringverdiener.</li>
+      </ul>
+      <p><strong>Faustregel:</strong> Wenn Sie nur ein Dienstverhältnis hatten und keine besonderen Absetzbeträge oder Werbungskosten haben, kann die Gutschrift gering sein. Aber: Es kostet nichts, es zu versuchen - bei der Antragsveranlagung riskieren Sie keine Nachzahlung.</p>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">Schritt-für-Schritt-Anleitung über FinanzOnline</h2>
+      <p>Die einfachste und schnellste Möglichkeit, den Steuerausgleich durchzuführen, ist über <strong>FinanzOnline</strong> (<a href="https://finanzonline.bmf.gv.at" target="_blank" rel="noopener noreferrer">finanzonline.bmf.gv.at</a>) - das elektronische Portal des Bundesministeriums für Finanzen.</p>
+
+      <h3 class="text-xl font-semibold mt-6 mb-2">Schritt 1: Registrierung bei FinanzOnline</h3>
+      <p>Falls Sie noch keinen FinanzOnline-Zugang haben, können Sie sich auf mehrere Arten registrieren:</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>Handysignatur/ID Austria:</strong> Die schnellste Methode - mit ID Austria können Sie sich sofort anmelden.</li>
+        <li><strong>Bürgerkarte:</strong> Mit einer aktivierten Bürgerkarte (e-Card, Bankkarte).</li>
+        <li><strong>Per Post:</strong> Zugangsdaten werden per Brief zugesendet (dauert einige Tage).</li>
+        <li><strong>Persönlich am Finanzamt:</strong> Mit Ausweis.</li>
+      </ul>
+
+      <h3 class="text-xl font-semibold mt-6 mb-2">Schritt 2: Lohnzettel prüfen</h3>
+      <p>Nach dem Login finden Sie unter „Abfragen" → „Lohnzettel" die von Ihrem Arbeitgeber übermittelten Jahreslohnzettel. Prüfen Sie, ob die Daten korrekt sind (Bruttogehalt, SV-Beiträge, einbehaltene Lohnsteuer). Die Lohnzettel werden vom Arbeitgeber üblicherweise bis Ende Februar des Folgejahres übermittelt.</p>
+
+      <h3 class="text-xl font-semibold mt-6 mb-2">Schritt 3: Formulare ausfüllen</h3>
+      <p>Gehen Sie zu „Eingaben/Anträge" → „Erklärungen" → „Arbeitnehmerveranlagung" (Formular L1). Das Formular ist vorausgefüllt mit den Daten aus den Lohnzetteln. Sie müssen ergänzen:</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>Werbungskosten:</strong> Berufsbedingte Ausgaben, die über dem Pauschbetrag von 132 € liegen.</li>
+        <li><strong>Sonderausgaben:</strong> Spenden, Kirchenbeiträge, Versicherungsprämien (alt).</li>
+        <li><strong>Außergewöhnliche Belastungen:</strong> Krankheitskosten, Behinderung, Katastrophenschäden.</li>
+        <li><strong>Familienbonus Plus:</strong> Anzahl und Alter der Kinder, gewünschte Aufteilung.</li>
+        <li><strong>Pendlerpauschale:</strong> Falls nicht bereits beim Arbeitgeber berücksichtigt.</li>
+        <li><strong>Alleinverdiener-/Alleinerzieherabsetzbetrag:</strong> Falls zutreffend.</li>
+      </ul>
+      <p>Viele Sonderausgaben (Spenden, Kirchenbeiträge) werden seit einigen Jahren automatisch von den Organisationen an das Finanzamt gemeldet und erscheinen bereits vorausgefüllt im Formular. Prüfen Sie die Beträge dennoch auf Vollständigkeit.</p>
+
+      <h3 class="text-xl font-semibold mt-6 mb-2">Schritt 4: Absenden und Bescheid abwarten</h3>
+      <p>Nach dem Absenden wird Ihre Erklärung vom Finanzamt bearbeitet. Bei elektronischer Einreichung erhalten Sie den Einkommensteuerbescheid in der Regel innerhalb weniger Wochen - oft schon nach 1 bis 2 Wochen. Die Gutschrift wird automatisch auf Ihr hinterlegtes Bankkonto überwiesen.</p>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">Die wichtigsten absetzbaren Kosten im Detail</h2>
+
+      <h3 class="text-xl font-semibold mt-6 mb-2">Werbungskosten</h3>
+      <p>Werbungskosten sind beruflich veranlasste Ausgaben, die über dem Werbungskostenpauschale von 132 € pro Jahr liegen. Wichtige Beispiele:</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li>Fort- und Weiterbildungskosten (Kursgebühren, Fachliteratur, Reisekosten)</li>
+        <li>Arbeitsmittel (Computer, Software, Fachliteratur, wenn beruflich genutzt)</li>
+        <li>Umschulungskosten (auch in einen neuen Beruf)</li>
+        <li>Doppelte Haushaltsführung und Familienheimfahrten</li>
+        <li>Betriebsratsumlage (wird automatisch berücksichtigt)</li>
+        <li>Homeoffice-Pauschale (3 € pro Tag, max. 100 Tage)</li>
+        <li>Gewerkschaftsbeiträge</li>
+      </ul>
+
+      <h3 class="text-xl font-semibold mt-6 mb-2">Sonderausgaben</h3>
+      <p>Bestimmte private Ausgaben können als Sonderausgaben steuerlich berücksichtigt werden:</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li>Spenden an begünstigte Organisationen (bis 10 % des Einkommens)</li>
+        <li>Kirchenbeiträge (bis 400 € pro Jahr)</li>
+        <li>Steuerberatungskosten</li>
+        <li>Beiträge zu Personenversicherungen (Neuverträge ab 2016 nicht mehr absetzbar, Altverträge teilweise noch)</li>
+      </ul>
+
+      <h3 class="text-xl font-semibold mt-6 mb-2">Außergewöhnliche Belastungen</h3>
+      <p>Außergewöhnliche Belastungen sind zwangsläufige Kosten, die die üblichen Lebenshaltungskosten übersteigen:</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li>Krankheitskosten (Selbstbehalte, Medikamente, Therapien)</li>
+        <li>Kosten einer Behinderung (Freibeträge nach Grad der Behinderung)</li>
+        <li>Kosten einer auswärtigen Berufsausbildung der Kinder (110 € pro Monat)</li>
+        <li>Katastrophenschäden (Hochwasser, Sturm, etc.)</li>
+        <li>Begräbniskosten (soweit sie den Nachlass übersteigen)</li>
+      </ul>
+      <p>Bei außergewöhnlichen Belastungen gilt ein Selbstbehalt, der vom Einkommen und der Familiensituation abhängt (6 bis 12 % des Einkommens). Erst der darüber liegende Betrag wirkt steuermindernd. Für Behinderungen und bestimmte Krankheitskosten gibt es keinen Selbstbehalt.</p>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">Fristen und Verjährung</h2>
+      <p>Die Fristen für die Arbeitnehmerveranlagung:</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>Antragsveranlagung (freiwillig):</strong> 5 Jahre rückwirkend möglich. Im Jahr 2025 können Sie die Jahre 2020 bis 2024 veranlagen.</li>
+        <li><strong>Pflichtveranlagung:</strong> Bis 30. April des Folgejahres (Papierform) bzw. bis 30. Juni (elektronisch über FinanzOnline). Bei Vertretung durch einen Steuerberater gelten verlängerte Fristen.</li>
+      </ul>
+      <p><strong>Tipp:</strong> Machen Sie die Arbeitnehmerveranlagung für alle offenen Jahre! Wenn Sie die letzten 5 Jahre nicht veranlagt haben, können Sie unter Umständen mehrere tausend Euro zurückerhalten.</p>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">Automatische Veranlagung (antragslose Arbeitnehmerveranlagung)</h2>
+      <p>Seit 2017 führt das Finanzamt in bestimmten Fällen eine automatische (antragslose) Arbeitnehmerveranlagung durch. Das geschieht, wenn das Finanzamt aufgrund der vorliegenden Daten (Lohnzettel, automatisch gemeldete Sonderausgaben) erkennt, dass eine Gutschrift zusteht. In diesem Fall erhalten Sie automatisch einen Bescheid und eine Gutschrift - ohne dass Sie aktiv werden müssen.</p>
+      <p>Allerdings berücksichtigt die automatische Veranlagung nur die dem Finanzamt bekannten Daten. Werbungskosten, die nicht automatisch gemeldet werden (z. B. Fortbildungskosten, Arbeitsmittel), werden dabei nicht berücksichtigt. Deshalb lohnt es sich trotzdem, eine vollständige Veranlagung selbst durchzuführen und alle absetzbaren Kosten anzugeben.</p>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">Tipps für die maximale Rückerstattung</h2>
+      <ol class="list-decimal pl-6 space-y-2">
+        <li><strong>Belege sammeln:</strong> Sammeln Sie das ganze Jahr über alle Belege für berufliche Ausgaben, Spenden und Krankheitskosten.</li>
+        <li><strong>Werbungskostenpauschale prüfen:</strong> Wenn Ihre tatsächlichen beruflichen Ausgaben 132 € pro Jahr übersteigen, lohnt sich die Einzelaufstellung.</li>
+        <li><strong>Familienbonus Plus nicht vergessen:</strong> Der FABO Plus ist der größte Posten für Familien - stellen Sie sicher, dass er optimal aufgeteilt ist.</li>
+        <li><strong>Rückwirkend veranlagen:</strong> Prüfen Sie, ob für vergangene Jahre noch eine Veranlagung möglich ist.</li>
+        <li><strong>FinanzOnline-Vorschau nutzen:</strong> Vor dem Absenden zeigt FinanzOnline eine Vorschau des voraussichtlichen Ergebnisses - so sehen Sie, ob eine Gutschrift zu erwarten ist.</li>
+      </ol>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">Häufig gestellte Fragen (FAQ)</h2>
+
+      <h3 class="text-xl font-semibold mt-6 mb-2">Was ist der Unterschied zwischen Pflichtveranlagung und Antragsveranlagung?</h3>
+      <p>Die Pflichtveranlagung ist gesetzlich vorgeschrieben, wenn bestimmte Voraussetzungen vorliegen (z. B. gleichzeitig zwei Dienstverhältnisse, Nebeneinkünfte über 730 €). Die Antragsveranlagung ist freiwillig und lohnt sich, wenn man eine Steuergutschrift erwartet. Bei der Antragsveranlagung gibt es kein Risiko: Ergibt sich eine Nachzahlung, wird der Antrag nicht durchgeführt. Für die Antragsveranlagung haben Sie 5 Jahre Zeit.</p>
+
+      <h3 class="text-xl font-semibold mt-6 mb-2">Wie viel Geld bekommt man beim Steuerausgleich zurück?</h3>
+      <p>Die Rückerstattung variiert stark und hängt von der individuellen Situation ab. Typische Rückerstattungen liegen zwischen 100 € und 1.500 € pro Jahr. Bei Familien mit Kindern (Familienbonus Plus von bis zu 2.000 € pro Kind), Pendlern oder Arbeitnehmern mit hohen Werbungskosten kann die Rückerstattung deutlich höher ausfallen. Bei einem Jobwechsel während des Jahres sind ebenfalls hohe Gutschriften üblich.</p>
+
+      <h3 class="text-xl font-semibold mt-6 mb-2">Wie lange hat man Zeit für den Steuerausgleich?</h3>
+      <p>Für die freiwillige Arbeitnehmerveranlagung haben Sie 5 Jahre Zeit. Im Jahr 2025 können Sie noch die Veranlagung für die Jahre 2020 bis 2024 einreichen. Für die Pflichtveranlagung gilt eine Frist bis 30. Juni des Folgejahres bei elektronischer Einreichung (30. April bei Papierform). Verspätete Pflichtveranlagungen können zu Verspätungszuschlägen führen.</p>
+    </div>
+
+    <div class="mt-12 bg-blue-50 border border-blue-200 rounded-xl p-6">
+      <h2 class="text-lg font-bold text-secondary mb-3">Verwandte Tools</h2>
+      <ul class="space-y-2 text-sm">
+        <li><a href="/" class="text-secondary underline hover:text-primary transition-colors">Brutto-Netto-Rechner Österreich</a> - Berechnen Sie Ihr Nettogehalt und sehen Sie die Abzüge</li>
+        <li><a href="/guides/lohnsteuer-oesterreich/" class="text-secondary underline hover:text-primary transition-colors">Lohnsteuer-Ratgeber</a> - Verstehen, wie die Lohnsteuer berechnet wird</li>
+        <li><a href="/guides/familienbonus-plus/" class="text-secondary underline hover:text-primary transition-colors">Familienbonus Plus</a> - Größter Absetzbetrag für Familien</li>
+        <li><a href="/guides/pendlerpauschale/" class="text-secondary underline hover:text-primary transition-colors">Pendlerpauschale</a> - Pendlerpauschale im Steuerausgleich geltend machen</li>
+      </ul>
+    </div>
+
+    <div class="mt-8 border-t border-gray-200 pt-6">
+      <h2 class="text-lg font-bold text-gray-900 mb-3">Quellen</h2>
+      <ul class="space-y-1 text-sm text-gray-600">
+        <li>FinanzOnline - <a href="https://finanzonline.bmf.gv.at" class="text-secondary underline hover:text-primary" target="_blank" rel="noopener noreferrer">finanzonline.bmf.gv.at</a></li>
+        <li>Bundesministerium für Finanzen - <a href="https://www.bmf.gv.at" class="text-secondary underline hover:text-primary" target="_blank" rel="noopener noreferrer">bmf.gv.at</a></li>
+        <li>Einkommensteuergesetz 1988 (EStG 1988), §§ 16, 18, 33, 34</li>
+        <li>Arbeiterkammer Österreich - <a href="https://www.arbeiterkammer.at" class="text-secondary underline hover:text-primary" target="_blank" rel="noopener noreferrer">arbeiterkammer.at</a></li>
+      </ul>
+    </div>
+  </article>
+</Layout>

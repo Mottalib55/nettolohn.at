@@ -1,0 +1,108 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Glossar - Begriffe zur Gehaltsabrechnung Oesterreich | nettolohn.at" description="Erklaerungen aller wichtigen Begriffe rund um die oesterreichische Gehaltsabrechnung: Lohnsteuer, Sozialversicherung, Sonderzahlungen und mehr.">
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://nettolohn.at/" },
+      { "@type": "ListItem", "position": 2, "name": "Glossar", "item": "https://nettolohn.at/glossar/" }
+    ]
+  })} />
+
+  <section class="py-12 md:py-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto">
+      <nav class="text-sm text-gray-500 mb-6">
+        <a href="/" class="hover:text-primary">Startseite</a>
+        <span class="mx-1">/</span>
+        <span class="text-gray-900">Glossar</span>
+      </nav>
+
+      <h1 class="text-4xl font-extrabold text-gray-900 mb-4">Glossar zur Gehaltsabrechnung Oesterreich</h1>
+      <p class="text-gray-600 mb-8">
+        Alle wichtigen Begriffe rund um Bruttolohn, Nettolohn, Sozialversicherung und Steuern in Oesterreich
+        verstaendlich erklaert.
+      </p>
+
+      <div class="space-y-6">
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+          <h2 class="text-lg font-bold text-gray-900 mb-2">Bruttolohn (Bruttogehalt)</h2>
+          <p class="text-gray-600">Das im Arbeitsvertrag vereinbarte Gehalt vor allen Abzuegen. Es umfasst den Grundlohn sowie eventuelle Zulagen, Zuschlaege und regelmaessige Praemien. Auf Basis des Bruttolohns werden Sozialversicherungsbeitraege und Lohnsteuer berechnet.</p>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+          <h2 class="text-lg font-bold text-gray-900 mb-2">Nettolohn (Nettogehalt)</h2>
+          <p class="text-gray-600">Der Betrag, der nach Abzug aller Sozialversicherungsbeitraege und der Lohnsteuer tatsaechlich auf das Konto ueberwiesen wird. Das Nettogehalt ist der Betrag, ueber den der Arbeitnehmer frei verfuegen kann.</p>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+          <h2 class="text-lg font-bold text-gray-900 mb-2">Lohnsteuer</h2>
+          <p class="text-gray-600">Die Einkommensteuer, die direkt vom Arbeitgeber vom Gehalt einbehalten und an das Finanzamt abgefuehrt wird. Sie wird nach einem progressiven Tarif berechnet: 0 % bis 12.816 EUR, 20 % bis 20.818 EUR, 30 % bis 34.513 EUR, 40 % bis 66.612 EUR, 48 % bis 99.266 EUR und 50 % darueber.</p>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+          <h2 class="text-lg font-bold text-gray-900 mb-2">Sozialversicherung (SV)</h2>
+          <p class="text-gray-600">Die Pflichtversicherung fuer alle Arbeitnehmer in Oesterreich, die aus Krankenversicherung, Pensionsversicherung, Arbeitslosenversicherung und Unfallversicherung besteht. Der Dienstnehmeranteil betraegt insgesamt rund 18 % des Bruttolohns (bis zur Hoechstbeitragsgrundlage).</p>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+          <h2 class="text-lg font-bold text-gray-900 mb-2">Krankenversicherung (KV)</h2>
+          <p class="text-gray-600">Die Pflichtversicherung zur Deckung von Krankheitskosten. Der Dienstnehmeranteil betraegt 3,87 % des Bruttolohns. Der Dienstgeberanteil betraegt ebenfalls 3,78 %. Die KV finanziert Arztbesuche, Spitalsaufenthalte, Medikamente und Krankengeld.</p>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+          <h2 class="text-lg font-bold text-gray-900 mb-2">Pensionsversicherung (PV)</h2>
+          <p class="text-gray-600">Die Versicherung fuer die Altersvorsorge. Der Dienstnehmeranteil betraegt 10,25 % des Bruttolohns. Der Dienstgeberanteil liegt bei 12,55 %. Aus den Beitraegen werden spaeter die Pensionszahlungen finanziert.</p>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+          <h2 class="text-lg font-bold text-gray-900 mb-2">Unfallversicherung (UV)</h2>
+          <p class="text-gray-600">Die Versicherung gegen Arbeitsunfaelle und Berufskrankheiten. Der Beitrag von 1,1 % wird vollstaendig vom Arbeitgeber getragen. Der Arbeitnehmer zahlt keinen Anteil.</p>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+          <h2 class="text-lg font-bold text-gray-900 mb-2">Arbeitslosenversicherung (AV)</h2>
+          <p class="text-gray-600">Die Versicherung bei Verlust des Arbeitsplatzes. Der Beitragssatz ist einkommensabhaengig gestaffelt: 0 % bei sehr niedrigen Einkommen, 1 % im mittleren Bereich und bis zu 3 % bei hoeheren Einkommen. Der Dienstgeberanteil betraegt 3 %.</p>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+          <h2 class="text-lg font-bold text-gray-900 mb-2">Dienstgeberbeitrag (DB)</h2>
+          <p class="text-gray-600">Ein vom Arbeitgeber zu tragender Beitrag zum Familienlastenausgleichsfonds (FLAF). Er betraegt 3,9 % des Bruttolohns und dient der Finanzierung von Familienbeihilfe und anderen Familienleistungen.</p>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+          <h2 class="text-lg font-bold text-gray-900 mb-2">Zuschlag zum Dienstgeberbeitrag (DZ)</h2>
+          <p class="text-gray-600">Ein zusaetzlicher Beitrag des Arbeitgebers, der an die Wirtschaftskammer abgefuehrt wird. Die Hoehe variiert je nach Bundesland und betraegt zwischen 0,34 % und 0,42 % des Bruttolohns.</p>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+          <h2 class="text-lg font-bold text-gray-900 mb-2">Pendlerpauschale</h2>
+          <p class="text-gray-600">Ein steuerlicher Freibetrag fuer Arbeitnehmer, die zwischen Wohnort und Arbeitstaette pendeln. Es gibt die kleine Pendlerpauschale (ab 20 km, wenn oeffentliche Verkehrsmittel zumutbar sind) und die grosse Pendlerpauschale (ab 2 km, wenn keine oeffentlichen Verkehrsmittel zumutbar sind). Sie kann monatlich vom Arbeitgeber beruecksichtigt werden.</p>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+          <h2 class="text-lg font-bold text-gray-900 mb-2">Sonderzahlung (13. und 14. Gehalt)</h2>
+          <p class="text-gray-600">In Oesterreich erhalten Arbeitnehmer in der Regel 14 Gehaelter pro Jahr. Das 13. Gehalt (Weihnachtsgeld) und das 14. Gehalt (Urlaubsgeld) werden steuerlich beguenstigt: Nach Abzug der Sozialversicherungsbeitraege und eines Freibetrags von 620 EUR wird ein pauschaler Steuersatz von nur 6 % angewendet.</p>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+          <h2 class="text-lg font-bold text-gray-900 mb-2">13./14. Gehalt</h2>
+          <p class="text-gray-600">Das Urlaubsgeld (meistens im Juni) und das Weihnachtsgeld (meistens im November). Beide entsprechen in der Regel jeweils einem vollen Monatsgehalt. Sie unterliegen der Sozialversicherungspflicht, werden aber steuerlich mit dem reduzierten Satz von 6 % besteuert.</p>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+          <h2 class="text-lg font-bold text-gray-900 mb-2">Alleinverdienerabsetzbetrag (AVAB)</h2>
+          <p class="text-gray-600">Ein Steuerabsetzbetrag fuer Alleinverdiener oder Alleinerziehende mit mindestens einem Kind. Er betraegt 520 EUR bei einem Kind, 704 EUR bei zwei Kindern und erhoet sich um 232 EUR fuer jedes weitere Kind. Voraussetzung ist, dass der Partner maximal 6.312 EUR pro Jahr verdient.</p>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+          <h2 class="text-lg font-bold text-gray-900 mb-2">AVAB (Alleinverdiener-/Alleinerzieherabsetzbetrag)</h2>
+          <p class="text-gray-600">Zusammenfassende Bezeichnung fuer den Alleinverdienerabsetzbetrag und den Alleinerzieherabsetzbetrag. Beide Absetzbetraege sollen die besondere wirtschaftliche Belastung von Familien mit nur einem Einkommen mildern. Sie werden direkt von der Einkommensteuer abgezogen und koennen ueber den Arbeitgeber oder im Rahmen der Arbeitnehmerveranlagung beantragt werden.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

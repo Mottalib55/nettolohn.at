@@ -1,0 +1,86 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const guides = [
+  {
+    title: 'Lohnsteuer in Österreich',
+    description: 'Alles zu den Einkommensteuerstufen, Grenzsteuersätzen und der Berechnung der Lohnsteuer in Österreich 2025/2026.',
+    href: '/guides/lohnsteuer-oesterreich/',
+    icon: '📊',
+  },
+  {
+    title: 'Sozialversicherungsbeiträge',
+    description: 'Kranken-, Pensions-, Arbeitslosen- und Unfallversicherung: So setzen sich Ihre SV-Beiträge zusammen.',
+    href: '/guides/sozialversicherung-beitraege/',
+    icon: '🏥',
+  },
+  {
+    title: '13. und 14. Gehalt',
+    description: 'Urlaubsgeld und Weihnachtsgeld in Österreich - steuerliche Begünstigung der Sonderzahlungen erklärt.',
+    href: '/guides/13-14-gehalt/',
+    icon: '🎁',
+  },
+  {
+    title: 'Familienbonus Plus',
+    description: 'Der Familienbonus Plus als Steuerabsetzbetrag: Voraussetzungen, Höhe und Beantragung.',
+    href: '/guides/familienbonus-plus/',
+    icon: '👨‍👩‍👧‍👦',
+  },
+  {
+    title: 'Pendlerpauschale',
+    description: 'Kleines und großes Pendlerpauschale, Pendlereuro und Voraussetzungen für Pendler in Österreich.',
+    href: '/guides/pendlerpauschale/',
+    icon: '🚗',
+  },
+  {
+    title: 'Gehaltsverhandlung - Tipps',
+    description: 'Praktische Tipps für erfolgreiche Gehaltsverhandlungen in Österreich mit Brutto-Netto-Perspektive.',
+    href: '/guides/gehaltsverhandlung-tipps/',
+    icon: '💼',
+  },
+  {
+    title: 'Teilzeitgehalt berechnen',
+    description: 'So berechnen Sie Ihr Netto-Teilzeitgehalt: Auswirkungen auf Steuer, SV-Beiträge und Sonderzahlungen.',
+    href: '/guides/teilzeit-gehalt-berechnen/',
+    icon: '⏰',
+  },
+  {
+    title: 'Steuerausgleich & Arbeitnehmerveranlagung',
+    description: 'Schritt-für-Schritt-Anleitung zur Arbeitnehmerveranlagung über FinanzOnline - so holen Sie sich Geld zurück.',
+    href: '/guides/steuerausgleich-arbeitnehmerveranlagung/',
+    icon: '📝',
+  },
+];
+---
+
+<Layout
+  title="Ratgeber - Gehalt, Steuern & Sozialversicherung in Österreich | nettolohn.at"
+  description="Umfassende Ratgeber zu Lohnsteuer, Sozialversicherung, Sonderzahlungen, Familienbonus Plus und mehr. Alles Wissenswerte rund ums Gehalt in Österreich."
+>
+  <section class="bg-primary text-white py-12">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h1 class="text-3xl md:text-4xl font-extrabold mb-4">Ratgeber rund ums Gehalt in Österreich</h1>
+      <p class="text-lg md:text-xl text-white/90 max-w-2xl mx-auto">Von der Lohnsteuer über Sozialversicherung bis zur Gehaltsverhandlung - unsere ausführlichen Ratgeber helfen Ihnen, Ihr Nettogehalt besser zu verstehen.</p>
+    </div>
+  </section>
+
+  <section class="max-w-6xl mx-auto px-4 py-12">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {guides.map((guide) => (
+        <a
+          href={guide.href}
+          class="group block bg-white rounded-xl shadow-md hover:shadow-xl border border-gray-200 hover:border-primary transition-all duration-200 p-6"
+        >
+          <div class="text-4xl mb-4">{guide.icon}</div>
+          <h2 class="text-lg font-bold text-gray-900 group-hover:text-primary transition-colors mb-2">
+            {guide.title}
+          </h2>
+          <p class="text-sm text-gray-600 leading-relaxed">{guide.description}</p>
+          <span class="inline-block mt-4 text-sm font-semibold text-primary group-hover:underline">
+            Jetzt lesen →
+          </span>
+        </a>
+      ))}
+    </div>
+  </section>
+</Layout>

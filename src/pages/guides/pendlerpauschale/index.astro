@@ -1,0 +1,192 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://nettolohn.at/" },
+    { "@type": "ListItem", "position": 2, "name": "Ratgeber", "item": "https://nettolohn.at/guides/" },
+    { "@type": "ListItem", "position": 3, "name": "Pendlerpauschale", "item": "https://nettolohn.at/guides/pendlerpauschale/" }
+  ]
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Wer hat Anspruch auf die Pendlerpauschale in Österreich?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Arbeitnehmer haben Anspruch auf die Pendlerpauschale, wenn der Arbeitsweg mindestens 20 km beträgt (kleines Pendlerpauschale) oder wenn die Benützung öffentlicher Verkehrsmittel unzumutbar ist und der Arbeitsweg mindestens 2 km beträgt (großes Pendlerpauschale). Die Zumutbarkeit wird nach Fahrzeit, Wegzeit und Verfügbarkeit der Öffis beurteilt."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Was ist der Unterschied zwischen kleinem und großem Pendlerpauschale?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Das kleine Pendlerpauschale gibt es, wenn öffentliche Verkehrsmittel zumutbar sind und der Arbeitsweg mindestens 20 km beträgt. Das große Pendlerpauschale steht zu, wenn öffentliche Verkehrsmittel unzumutbar sind und der Arbeitsweg mindestens 2 km beträgt. Das große Pendlerpauschale ist bei gleicher Entfernung deutlich höher als das kleine."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Was ist der Pendlereuro und wie wird er berechnet?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Der Pendlereuro ist ein Steuerabsetzbetrag von 2 € pro Kilometer Arbeitsweg und Jahr. Er wird zusätzlich zur Pendlerpauschale gewährt und reduziert die Steuerlast direkt. Bei einem einfachen Arbeitsweg von 30 km beträgt der Pendlereuro 60 € pro Jahr (30 × 2 €)."
+      }
+    }
+  ]
+};
+---
+
+<Layout
+  title="Pendlerpauschale Österreich 2025 - Kleines & großes Pendlerpauschale erklärt | nettolohn.at"
+  description="Alles zur Pendlerpauschale in Österreich: Kleines und großes Pendlerpauschale, Pendlereuro, Voraussetzungen, Beträge und Beantragung beim Arbeitgeber."
+>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <nav class="max-w-4xl mx-auto px-4 pt-6 text-sm text-gray-500" aria-label="Breadcrumb">
+    <ol class="flex flex-wrap items-center gap-1">
+      <li><a href="/" class="hover:text-primary transition-colors">Startseite</a></li>
+      <li class="before:content-['/'] before:mx-1"><a href="/guides/" class="hover:text-primary transition-colors">Ratgeber</a></li>
+      <li class="before:content-['/'] before:mx-1 text-gray-900 font-medium">Pendlerpauschale</li>
+    </ol>
+  </nav>
+
+  <article class="max-w-4xl mx-auto px-4 py-10">
+    <div class="prose prose-lg max-w-none prose-headings:text-gray-900 prose-a:text-secondary prose-a:underline hover:prose-a:text-primary">
+      <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-6">Pendlerpauschale in Österreich 2025 - Ihr Ratgeber für Pendler</h1>
+
+      <p class="text-lg text-gray-700 leading-relaxed">Hunderttausende Arbeitnehmerinnen und Arbeitnehmer in Österreich pendeln täglich zu ihrer Arbeitsstätte. Die Pendlerpauschale und der Pendlereuro sind wichtige steuerliche Entlastungen, die diese Wegkosten berücksichtigen. Doch die Regelungen sind komplex: Wann gilt das kleine, wann das große Pendlerpauschale? Wie wird die Zumutbarkeit öffentlicher Verkehrsmittel beurteilt? Und wie beantragen Sie die Pendlerpauschale richtig? Alle Antworten finden Sie in diesem Ratgeber.</p>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">Was ist die Pendlerpauschale?</h2>
+      <p>Die Pendlerpauschale ist ein steuerlicher Freibetrag, der die Fahrtkosten zwischen Wohnung und Arbeitsstätte berücksichtigt. Grundsätzlich gilt in Österreich: Der Verkehrsabsetzbetrag (463 € pro Jahr) deckt die normalen Fahrtkosten für alle Arbeitnehmer ab. Für Arbeitnehmer mit längeren Arbeitswegen oder unzumutbaren Öffi-Verbindungen gibt es zusätzlich die Pendlerpauschale.</p>
+      <p>Die Pendlerpauschale wird als Freibetrag vom steuerpflichtigen Einkommen abgezogen und verringert somit die Bemessungsgrundlage für die Lohnsteuer. In Kombination mit dem Pendlereuro (einem Absetzbetrag) ergibt sich eine spürbare Steuerentlastung für Pendler.</p>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">Kleines Pendlerpauschale</h2>
+      <p>Das kleine Pendlerpauschale steht Arbeitnehmern zu, wenn:</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li>Der einfache Arbeitsweg mindestens 20 km beträgt</li>
+        <li>Die Benützung öffentlicher Verkehrsmittel zumutbar ist</li>
+      </ul>
+      <p>Die Höhe des kleinen Pendlerpauschale richtet sich nach der Entfernung:</p>
+      <div class="overflow-x-auto my-6">
+        <table class="min-w-full border border-gray-200 rounded-lg text-sm">
+          <thead class="bg-gray-100">
+            <tr>
+              <th class="px-4 py-3 text-left font-semibold">Entfernung (einfach)</th>
+              <th class="px-4 py-3 text-left font-semibold">Jährlich</th>
+              <th class="px-4 py-3 text-left font-semibold">Monatlich</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-200">
+            <tr><td class="px-4 py-3">20 bis 40 km</td><td class="px-4 py-3">696 €</td><td class="px-4 py-3">58 €</td></tr>
+            <tr><td class="px-4 py-3">40 bis 60 km</td><td class="px-4 py-3">1.356 €</td><td class="px-4 py-3">113 €</td></tr>
+            <tr><td class="px-4 py-3">über 60 km</td><td class="px-4 py-3">2.016 €</td><td class="px-4 py-3">168 €</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">Großes Pendlerpauschale</h2>
+      <p>Das große Pendlerpauschale steht Arbeitnehmern zu, wenn die Benützung öffentlicher Verkehrsmittel unzumutbar ist. In diesem Fall reicht bereits ein einfacher Arbeitsweg von mindestens 2 km aus.</p>
+      <p>Die Höhe des großen Pendlerpauschale:</p>
+      <div class="overflow-x-auto my-6">
+        <table class="min-w-full border border-gray-200 rounded-lg text-sm">
+          <thead class="bg-gray-100">
+            <tr>
+              <th class="px-4 py-3 text-left font-semibold">Entfernung (einfach)</th>
+              <th class="px-4 py-3 text-left font-semibold">Jährlich</th>
+              <th class="px-4 py-3 text-left font-semibold">Monatlich</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-200">
+            <tr><td class="px-4 py-3">2 bis 20 km</td><td class="px-4 py-3">372 €</td><td class="px-4 py-3">31 €</td></tr>
+            <tr><td class="px-4 py-3">20 bis 40 km</td><td class="px-4 py-3">1.476 €</td><td class="px-4 py-3">123 €</td></tr>
+            <tr><td class="px-4 py-3">40 bis 60 km</td><td class="px-4 py-3">2.568 €</td><td class="px-4 py-3">214 €</td></tr>
+            <tr><td class="px-4 py-3">über 60 km</td><td class="px-4 py-3">3.672 €</td><td class="px-4 py-3">306 €</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Wie man sieht, ist das große Pendlerpauschale bei gleicher Entfernung deutlich höher als das kleine - bei über 60 km beispielsweise 3.672 € statt 2.016 € pro Jahr.</p>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">Wann sind öffentliche Verkehrsmittel unzumutbar?</h2>
+      <p>Die Zumutbarkeit der Benützung öffentlicher Verkehrsmittel wird nach mehreren Kriterien beurteilt:</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>Keine Öffi-Verbindung:</strong> Es gibt keine öffentliche Verkehrsverbindung auf der gesamten oder überwiegenden Strecke.</li>
+        <li><strong>Unzumutbare Fahrzeit:</strong> Die Fahrzeit mit öffentlichen Verkehrsmitteln beträgt für die einfache Strecke mehr als 90 Minuten (bei einer Entfernung bis 60 km) bzw. mehr als 120 Minuten (bei einer Entfernung über 60 km).</li>
+        <li><strong>Gesundheitliche Gründe:</strong> Eine körperliche Behinderung (mindestens 50 %) macht die Benützung öffentlicher Verkehrsmittel unzumutbar.</li>
+        <li><strong>Ungünstige Fahrzeiten:</strong> Die Arbeitszeiten erfordern einen Arbeitsantritt oder ein Arbeitsende zu Zeiten, in denen keine öffentlichen Verkehrsmittel verkehren (z. B. Schichtarbeit, Nachtdienst).</li>
+      </ul>
+      <p>Die Beurteilung erfolgt über den <strong>Pendlerrechner</strong> des Bundesministeriums für Finanzen (<a href="https://pendlerrechner.bmf.gv.at" target="_blank" rel="noopener noreferrer">pendlerrechner.bmf.gv.at</a>). Das Ergebnis des Pendlerrechners ist grundsätzlich verbindlich und muss dem Arbeitgeber vorgelegt werden.</p>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">Der Pendlereuro</h2>
+      <p>Zusätzlich zur Pendlerpauschale gibt es den Pendlereuro. Dieser ist ein Steuerabsetzbetrag (kein Freibetrag) und wird direkt von der berechneten Lohnsteuer abgezogen. Der Pendlereuro beträgt 2 € pro Kilometer einfacher Arbeitsweg pro Jahr.</p>
+      <p><strong>Beispiel:</strong> Bei einem einfachen Arbeitsweg von 35 km beträgt der Pendlereuro 70 € pro Jahr (35 km × 2 €). Dieser Betrag wird direkt von der Steuerschuld abgezogen.</p>
+      <p>Der Pendlereuro steht allen Arbeitnehmern zu, die Anspruch auf eine Pendlerpauschale haben - unabhängig davon, ob es sich um das kleine oder große Pendlerpauschale handelt.</p>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">Pendlerpauschale bei Teilzeit</h2>
+      <p>Bei Teilzeitbeschäftigten wird die Pendlerpauschale aliquotiert, wenn an weniger als 11 Tagen im Monat zur Arbeitsstätte gefahren wird:</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li>Mindestens 11 Tage pro Monat: volles Pendlerpauschale</li>
+        <li>Mindestens 8, aber weniger als 11 Tage: zwei Drittel des Pendlerpauschale</li>
+        <li>Mindestens 4, aber weniger als 8 Tage: ein Drittel des Pendlerpauschale</li>
+        <li>Weniger als 4 Tage: kein Pendlerpauschale</li>
+      </ul>
+      <p>Der Pendlereuro wird in gleicher Weise aliquotiert.</p>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">Pendlerpauschale und Homeoffice</h2>
+      <p>Seit der Etablierung von Homeoffice-Regelungen stellt sich die Frage, wie sich Homeoffice-Tage auf die Pendlerpauschale auswirken. Grundsätzlich gilt: Die Pendlerpauschale richtet sich nach der Anzahl der Tage, an denen tatsächlich zur Arbeitsstätte gefahren wird. Bei regelmäßigem Homeoffice kann dies zu einer Aliquotierung führen.</p>
+      <p>Allerdings gibt es seit 2021 das Homeoffice-Pauschale von 3 € pro Homeoffice-Tag (maximal 100 Tage pro Jahr = 300 €). Dieses kann zusätzlich zur (aliquotierten) Pendlerpauschale geltend gemacht werden. Die Kombination aus Pendlerpauschale für Bürotage und Homeoffice-Pauschale für Homeoffice-Tage ist möglich und steuerlich sinnvoll.</p>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">Beantragung und Pendlerrechner</h2>
+      <p>Die Pendlerpauschale wird über das Formular L34 (Erklärung zur Berücksichtigung des Pendlerpauschales) beim Arbeitgeber beantragt. Dem Formular ist ein Ausdruck des Pendlerrechner-Ergebnisses beizulegen. Der Arbeitgeber berücksichtigt die Pendlerpauschale dann laufend bei der monatlichen Gehaltsabrechnung.</p>
+      <p>Alternativ kann die Pendlerpauschale auch im Rahmen der jährlichen Arbeitnehmerveranlagung über FinanzOnline geltend gemacht werden. In diesem Fall erhält man die Steuerersparnis als Gutschrift.</p>
+      <p><strong>Tipp:</strong> Überprüfen Sie bei jeder Änderung des Wohnorts, des Arbeitsorts oder der Arbeitszeiten das Ergebnis des Pendlerrechners und aktualisieren Sie gegebenenfalls das Formular L34 bei Ihrem Arbeitgeber.</p>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">Berechnungsbeispiel: Steuerersparnis durch Pendlerpauschale</h2>
+      <p>Ein Angestellter mit 3.200 € brutto monatlich pendelt 45 km (einfach) zur Arbeit. Öffentliche Verkehrsmittel sind verfügbar, aber die Fahrzeit beträgt über 90 Minuten. Daher steht ihm das große Pendlerpauschale zu.</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li>Großes Pendlerpauschale (40–60 km): 2.568 € pro Jahr</li>
+        <li>Pendlereuro: 45 × 2 € = 90 € pro Jahr</li>
+        <li>Bei einem Grenzsteuersatz von 40 %: Freibetrag-Ersparnis = 2.568 € × 40 % = 1.027,20 €</li>
+        <li>Plus Pendlereuro (Absetzbetrag): 90 €</li>
+        <li><strong>Gesamte Steuerersparnis: ca. 1.117 € pro Jahr (ca. 93 € monatlich)</strong></li>
+      </ul>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">Häufig gestellte Fragen (FAQ)</h2>
+
+      <h3 class="text-xl font-semibold mt-6 mb-2">Wer hat Anspruch auf die Pendlerpauschale in Österreich?</h3>
+      <p>Arbeitnehmer haben Anspruch auf die Pendlerpauschale, wenn der Arbeitsweg mindestens 20 km beträgt (kleines Pendlerpauschale) oder wenn die Benützung öffentlicher Verkehrsmittel unzumutbar ist und der Arbeitsweg mindestens 2 km beträgt (großes Pendlerpauschale). Die Zumutbarkeit wird nach Fahrzeit, Wegzeit und Verfügbarkeit der öffentlichen Verkehrsmittel beurteilt und über den offiziellen Pendlerrechner ermittelt.</p>
+
+      <h3 class="text-xl font-semibold mt-6 mb-2">Was ist der Unterschied zwischen kleinem und großem Pendlerpauschale?</h3>
+      <p>Das kleine Pendlerpauschale gibt es, wenn öffentliche Verkehrsmittel zumutbar sind und der Arbeitsweg mindestens 20 km beträgt (696 bis 2.016 € jährlich). Das große Pendlerpauschale steht zu, wenn öffentliche Verkehrsmittel unzumutbar sind und der Arbeitsweg mindestens 2 km beträgt (372 bis 3.672 € jährlich). Das große Pendlerpauschale ist bei gleicher Entfernung deutlich höher.</p>
+
+      <h3 class="text-xl font-semibold mt-6 mb-2">Was ist der Pendlereuro und wie wird er berechnet?</h3>
+      <p>Der Pendlereuro ist ein Steuerabsetzbetrag von 2 € pro Kilometer Arbeitsweg und Jahr. Er wird zusätzlich zur Pendlerpauschale gewährt und reduziert die Steuerlast direkt. Bei einem einfachen Arbeitsweg von 30 km beträgt der Pendlereuro 60 € pro Jahr (30 × 2 €). Im Gegensatz zur Pendlerpauschale (Freibetrag) wird der Pendlereuro als Absetzbetrag direkt von der Steuerschuld abgezogen.</p>
+    </div>
+
+    <div class="mt-12 bg-blue-50 border border-blue-200 rounded-xl p-6">
+      <h2 class="text-lg font-bold text-secondary mb-3">Verwandte Tools</h2>
+      <ul class="space-y-2 text-sm">
+        <li><a href="/" class="text-secondary underline hover:text-primary transition-colors">Brutto-Netto-Rechner Österreich</a> - Berechnen Sie Ihr Nettogehalt inkl. Pendlerpauschale</li>
+        <li><a href="/guides/lohnsteuer-oesterreich/" class="text-secondary underline hover:text-primary transition-colors">Lohnsteuer-Ratgeber</a> - So wirkt die Pendlerpauschale auf Ihre Steuer</li>
+        <li><a href="/guides/steuerausgleich-arbeitnehmerveranlagung/" class="text-secondary underline hover:text-primary transition-colors">Steuerausgleich-Ratgeber</a> - Pendlerpauschale nachträglich geltend machen</li>
+      </ul>
+    </div>
+
+    <div class="mt-8 border-t border-gray-200 pt-6">
+      <h2 class="text-lg font-bold text-gray-900 mb-3">Quellen</h2>
+      <ul class="space-y-1 text-sm text-gray-600">
+        <li>Bundesministerium für Finanzen - Pendlerrechner: <a href="https://pendlerrechner.bmf.gv.at" class="text-secondary underline hover:text-primary" target="_blank" rel="noopener noreferrer">pendlerrechner.bmf.gv.at</a></li>
+        <li>Einkommensteuergesetz 1988 (EStG 1988), § 16 Abs. 1 Z 6</li>
+        <li>Pendlerverordnung (BGBl. II Nr. 276/2013)</li>
+        <li>Arbeiterkammer Österreich - <a href="https://www.arbeiterkammer.at" class="text-secondary underline hover:text-primary" target="_blank" rel="noopener noreferrer">arbeiterkammer.at</a></li>
+      </ul>
+    </div>
+  </article>
+</Layout>

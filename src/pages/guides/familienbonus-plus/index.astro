@@ -1,0 +1,172 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://nettolohn.at/" },
+    { "@type": "ListItem", "position": 2, "name": "Ratgeber", "item": "https://nettolohn.at/guides/" },
+    { "@type": "ListItem", "position": 3, "name": "Familienbonus Plus", "item": "https://nettolohn.at/guides/familienbonus-plus/" }
+  ]
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Wie hoch ist der Familienbonus Plus 2025?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Der Familienbonus Plus beträgt bis zu 2.000 € pro Kind und Jahr für Kinder bis 18 Jahre. Für volljährige Kinder, für die noch Familienbeihilfe bezogen wird (z. B. Studierende), beträgt der Bonus 650 € pro Jahr. Der Betrag wird monatlich aliquot berücksichtigt."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Können beide Elternteile den Familienbonus Plus beantragen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja, der Familienbonus Plus kann zwischen den Eltern aufgeteilt werden. Möglich ist eine 100/0-Aufteilung (ein Elternteil beantragt den vollen Betrag) oder eine 50/50-Aufteilung (jeder Elternteil beantragt die Hälfte). Die optimale Aufteilung hängt von der jeweiligen Einkommenssituation ab."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Was ist der Kindermehrbetrag?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Der Kindermehrbetrag ist eine Gutschrift für Eltern, deren Einkommen so gering ist, dass sie den Familienbonus Plus nicht oder nicht vollständig nutzen können. Er beträgt bis zu 700 € pro Kind und Jahr und wird im Rahmen der Arbeitnehmerveranlagung ausbezahlt."
+      }
+    }
+  ]
+};
+---
+
+<Layout
+  title="Familienbonus Plus 2025 - Höhe, Voraussetzungen & Beantragung | nettolohn.at"
+  description="Alles zum Familienbonus Plus in Österreich: Höhe des Absetzbetrags, Voraussetzungen, Aufteilung zwischen Eltern, Kindermehrbetrag und Beantragung."
+>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <nav class="max-w-4xl mx-auto px-4 pt-6 text-sm text-gray-500" aria-label="Breadcrumb">
+    <ol class="flex flex-wrap items-center gap-1">
+      <li><a href="/" class="hover:text-primary transition-colors">Startseite</a></li>
+      <li class="before:content-['/'] before:mx-1"><a href="/guides/" class="hover:text-primary transition-colors">Ratgeber</a></li>
+      <li class="before:content-['/'] before:mx-1 text-gray-900 font-medium">Familienbonus Plus</li>
+    </ol>
+  </nav>
+
+  <article class="max-w-4xl mx-auto px-4 py-10">
+    <div class="prose prose-lg max-w-none prose-headings:text-gray-900 prose-a:text-secondary prose-a:underline hover:prose-a:text-primary">
+      <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-6">Familienbonus Plus 2025 - Der Steuerabsetzbetrag für Familien in Österreich</h1>
+
+      <p class="text-lg text-gray-700 leading-relaxed">Der Familienbonus Plus ist der wichtigste Steuerabsetzbetrag für Familien in Österreich. Seit seiner Einführung 2019 und der Erhöhung im Jahr 2022 entlastet er Eltern mit Kindern um bis zu 2.000 € pro Kind und Jahr. In diesem Ratgeber erklären wir Ihnen alle Details: Wer hat Anspruch, wie hoch ist der Bonus, wie wird er aufgeteilt und wie beantragen Sie ihn?</p>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">Was ist der Familienbonus Plus?</h2>
+      <p>Der Familienbonus Plus (FABO Plus) ist ein Steuerabsetzbetrag, der die Lohnsteuer bzw. Einkommensteuer direkt reduziert. Im Gegensatz zu einem Freibetrag, der nur die Bemessungsgrundlage verringert, wird der Familienbonus Plus direkt von der berechneten Steuerschuld abgezogen. Das macht ihn besonders wirkungsvoll: Jeder Euro Familienbonus Plus bedeutet einen Euro weniger Steuerlast.</p>
+      <p>Der Familienbonus Plus hat den Kinderfreibetrag und die steuerliche Abzugsfähigkeit von Kinderbetreuungskosten ersetzt. Er gilt als eine der bedeutendsten familienpolitischen Steuermaßnahmen der letzten Jahre in Österreich und kommt rund 950.000 Familien mit insgesamt ca. 1,6 Millionen Kindern zugute.</p>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">Höhe des Familienbonus Plus</h2>
+      <p>Die Höhe des Familienbonus Plus richtet sich nach dem Alter des Kindes:</p>
+      <div class="overflow-x-auto my-6">
+        <table class="min-w-full border border-gray-200 rounded-lg text-sm">
+          <thead class="bg-gray-100">
+            <tr>
+              <th class="px-4 py-3 text-left font-semibold">Alter des Kindes</th>
+              <th class="px-4 py-3 text-left font-semibold">Jährlicher Betrag</th>
+              <th class="px-4 py-3 text-left font-semibold">Monatlicher Betrag</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-200">
+            <tr><td class="px-4 py-3">Bis 18 Jahre</td><td class="px-4 py-3">2.000,00 €</td><td class="px-4 py-3">166,68 €</td></tr>
+            <tr><td class="px-4 py-3">Über 18 Jahre (mit Familienbeihilfe)</td><td class="px-4 py-3">650,00 €</td><td class="px-4 py-3">54,18 €</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Der Familienbonus Plus wird für jedes Kind gewährt, für das Familienbeihilfe bezogen wird. Er steht grundsätzlich ab dem Monat der Geburt zu und endet mit dem Monat, in dem das Kind 18 wird oder - bei Weiterbestehen des Familienbeihilfenanspruchs - mit dem Ende der Familienbeihilfe (meist mit 24 Jahren).</p>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">Voraussetzungen</h2>
+      <p>Um den Familienbonus Plus in Anspruch nehmen zu können, müssen folgende Voraussetzungen erfüllt sein:</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>Familienbeihilfe:</strong> Für das Kind muss Familienbeihilfe bezogen werden. Es spielt keine Rolle, ob der Antragsteller selbst oder der andere Elternteil die Familienbeihilfe bezieht.</li>
+        <li><strong>Steuerpflicht:</strong> Der Antragsteller muss in Österreich unbeschränkt steuerpflichtig sein (Wohnsitz oder gewöhnlicher Aufenthalt in Österreich).</li>
+        <li><strong>Steuerlast:</strong> Der Familienbonus Plus kann nur in der Höhe der tatsächlichen Steuerlast genutzt werden - eine Auszahlung als Negativsteuer gibt es nicht (hierfür gibt es den Kindermehrbetrag).</li>
+        <li><strong>Kein Unterhalt im Ausland:</strong> Die Regelungen für Kinder, die dauerhaft im Ausland leben, sind seit 2019 eingeschränkt (Indexierung).</li>
+      </ul>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">Aufteilung zwischen den Eltern</h2>
+      <p>Der Familienbonus Plus kann zwischen den Eltern aufgeteilt werden. Es gibt dabei zwei Varianten:</p>
+      <ol class="list-decimal pl-6 space-y-2">
+        <li><strong>100/0-Aufteilung:</strong> Ein Elternteil beansprucht den vollen Familienbonus Plus (z. B. 2.000 € für ein Kind unter 18 Jahren).</li>
+        <li><strong>50/50-Aufteilung:</strong> Beide Elternteile beanspruchen jeweils die Hälfte (z. B. je 1.000 € pro Kind).</li>
+      </ol>
+      <p>Eine andere Aufteilung (z. B. 70/30) ist nicht möglich. Die gewählte Aufteilung muss nicht bei beiden Elternteilen gleich beantragt werden - sie wird aber vom Finanzamt bei der Veranlagung überprüft und gegebenenfalls korrigiert.</p>
+      <p><strong>Tipp:</strong> In der Regel ist es steuerlich am günstigsten, wenn der Elternteil mit dem höheren Einkommen den vollen Familienbonus Plus beantragt, da dieser eine höhere Steuerlast hat und den Bonus somit voll ausschöpfen kann. Verdienen beide Elternteile ähnlich viel, kann die 50/50-Aufteilung sinnvoll sein.</p>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">Familienbonus Plus bei Alleinerzieherinnen und Alleinerziehern</h2>
+      <p>Alleinerzieherinnen und Alleinerzieher können den vollen Familienbonus Plus allein beantragen. Zusätzlich steht ihnen der Alleinerzieherabsetzbetrag zu (572 € mit einem Kind, 774 € mit zwei Kindern, plus 220 € für jedes weitere Kind). Auch der Kindermehrbetrag kann von Alleinerzieherinnen beansprucht werden, wenn die Steuerlast zu gering ist, um den vollen Familienbonus Plus zu nutzen.</p>
+      <p>Bei getrennt lebenden Eltern hat grundsätzlich der Elternteil Anspruch, bei dem das Kind lebt und der die Familienbeihilfe bezieht. Der unterhaltspflichtige Elternteil kann einen Unterhaltsabsetzbetrag und gegebenenfalls anteilig den Familienbonus Plus beantragen.</p>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">Der Kindermehrbetrag</h2>
+      <p>Für Eltern, deren Einkommen so gering ist, dass sie den Familienbonus Plus nicht oder nicht vollständig nutzen können, gibt es den Kindermehrbetrag. Dieser wurde 2022 eingeführt und im Jahr 2023 auf 700 € erhöht.</p>
+      <p>Der Kindermehrbetrag wird im Rahmen der Arbeitnehmerveranlagung als Gutschrift ausbezahlt. Er steht Familien zu, die:</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li>Familienbeihilfe beziehen</li>
+        <li>In Österreich unbeschränkt steuerpflichtig sind</li>
+        <li>Mindestens 30 Tage im Kalenderjahr steuerpflichtige Einkünfte aus einer aktiven Erwerbstätigkeit erzielt haben</li>
+        <li>Den Familienbonus Plus aufgrund einer geringen Steuerlast nicht oder nicht vollständig ausschöpfen können</li>
+      </ul>
+      <p>Der Kindermehrbetrag beträgt maximal 700 € pro Kind und Jahr und ist die Differenz zwischen dem zustehenden Familienbonus Plus und der tatsächlich nutzbaren Steuerersparnis. Er ist damit ein wichtiges sozialpolitisches Instrument, das auch Geringverdienern eine Entlastung bietet.</p>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">Beantragung über den Arbeitgeber</h2>
+      <p>Der Familienbonus Plus kann auf zwei Wegen beantragt werden:</p>
+      <p><strong>1. Laufend über den Arbeitgeber:</strong> Mit dem Formular E 30 (Erklärung zur Berücksichtigung des Familienbonus Plus beim Arbeitgeber) können Sie beantragen, dass der Familienbonus Plus bereits bei der monatlichen Gehaltsabrechnung berücksichtigt wird. Das erhöht Ihr monatliches Nettogehalt sofort. Sie geben das Formular bei Ihrem Arbeitgeber ab, und dieser reduziert die monatliche Lohnsteuer entsprechend.</p>
+      <p><strong>2. Im Rahmen der Arbeitnehmerveranlagung:</strong> Alternativ können Sie den Familienbonus Plus bei der jährlichen Steuererklärung (Arbeitnehmerveranlagung) über FinanzOnline beantragen. In diesem Fall erhalten Sie die Steuerentlastung als einmalige Gutschrift vom Finanzamt. Diese Variante hat den Vorteil, dass die Berechnung automatisch korrekt erfolgt.</p>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">Berechnungsbeispiel</h2>
+      <p>Familie Müller hat zwei Kinder (3 und 7 Jahre alt). Der Vater verdient 3.800 € brutto monatlich, die Mutter arbeitet Teilzeit mit 1.800 € brutto monatlich.</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li>Maximaler FABO Plus: 2 × 2.000 € = 4.000 € pro Jahr</li>
+        <li>Steuerlast des Vaters: ca. 5.800 € pro Jahr → kann 4.000 € voll nutzen</li>
+        <li>Steuerlast der Mutter: ca. 750 € pro Jahr → könnte max. 750 € nutzen</li>
+      </ul>
+      <p><strong>Optimale Aufteilung:</strong> Der Vater beantragt den vollen FABO Plus für beide Kinder (4.000 €). Seine Steuerlast sinkt von ca. 5.800 € auf ca. 1.800 €. Das entspricht einer monatlichen Netto-Erhöhung von ca. 333 €.</p>
+      <p>Würde die Mutter den FABO Plus beantragen, könnte sie nur 750 € nutzen und würde 3.250 € „verschenken". Deshalb ist die 100/0-Aufteilung zugunsten des besserverdienenden Elternteils meist die beste Wahl.</p>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">Familienbonus Plus und Brutto-Netto-Rechner</h2>
+      <p>In unserem Brutto-Netto-Rechner können Sie den Familienbonus Plus direkt berücksichtigen. Geben Sie einfach die Anzahl und das Alter Ihrer Kinder ein, und der Rechner zeigt Ihnen, wie sich der Familienbonus Plus auf Ihr monatliches Nettogehalt auswirkt. So können Sie verschiedene Aufteilungsszenarien durchspielen und die für Ihre Familie optimale Variante finden.</p>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">Häufig gestellte Fragen (FAQ)</h2>
+
+      <h3 class="text-xl font-semibold mt-6 mb-2">Wie hoch ist der Familienbonus Plus 2025?</h3>
+      <p>Der Familienbonus Plus beträgt bis zu 2.000 € pro Kind und Jahr für Kinder bis 18 Jahre. Für volljährige Kinder, für die noch Familienbeihilfe bezogen wird (z. B. Studierende), beträgt der Bonus 650 € pro Jahr. Der Betrag wird monatlich aliquot berücksichtigt (ca. 166,68 € bzw. 54,18 € pro Monat).</p>
+
+      <h3 class="text-xl font-semibold mt-6 mb-2">Können beide Elternteile den Familienbonus Plus beantragen?</h3>
+      <p>Ja, der Familienbonus Plus kann zwischen den Eltern aufgeteilt werden. Möglich ist eine 100/0-Aufteilung (ein Elternteil beantragt den vollen Betrag) oder eine 50/50-Aufteilung (jeder Elternteil beantragt die Hälfte). Die optimale Aufteilung hängt von der jeweiligen Einkommenssituation ab - in der Regel ist es am besten, wenn der besserverdienende Elternteil den vollen Betrag beantragt.</p>
+
+      <h3 class="text-xl font-semibold mt-6 mb-2">Was ist der Kindermehrbetrag?</h3>
+      <p>Der Kindermehrbetrag ist eine Gutschrift für Eltern, deren Einkommen so gering ist, dass sie den Familienbonus Plus nicht oder nicht vollständig nutzen können. Er beträgt bis zu 700 € pro Kind und Jahr und wird im Rahmen der Arbeitnehmerveranlagung ausbezahlt. Voraussetzung ist u. a., dass mindestens 30 Tage im Jahr steuerpflichtige Einkünfte erzielt wurden.</p>
+    </div>
+
+    <div class="mt-12 bg-blue-50 border border-blue-200 rounded-xl p-6">
+      <h2 class="text-lg font-bold text-secondary mb-3">Verwandte Tools</h2>
+      <ul class="space-y-2 text-sm">
+        <li><a href="/" class="text-secondary underline hover:text-primary transition-colors">Brutto-Netto-Rechner mit Familienbonus Plus</a> - Berechnen Sie Ihr Nettogehalt inkl. FABO Plus</li>
+        <li><a href="/guides/lohnsteuer-oesterreich/" class="text-secondary underline hover:text-primary transition-colors">Lohnsteuer-Ratgeber</a> - Wie der FABO Plus die Steuerlast reduziert</li>
+        <li><a href="/guides/steuerausgleich-arbeitnehmerveranlagung/" class="text-secondary underline hover:text-primary transition-colors">Steuerausgleich-Ratgeber</a> - FABO Plus über FinanzOnline beantragen</li>
+      </ul>
+    </div>
+
+    <div class="mt-8 border-t border-gray-200 pt-6">
+      <h2 class="text-lg font-bold text-gray-900 mb-3">Quellen</h2>
+      <ul class="space-y-1 text-sm text-gray-600">
+        <li>Bundesministerium für Finanzen - <a href="https://www.bmf.gv.at/themen/steuern/familien/familienbonus-plus.html" class="text-secondary underline hover:text-primary" target="_blank" rel="noopener noreferrer">bmf.gv.at - Familienbonus Plus</a></li>
+        <li>Einkommensteuergesetz 1988 (EStG 1988), § 33 Abs. 3a</li>
+        <li>Arbeiterkammer Österreich - <a href="https://www.arbeiterkammer.at" class="text-secondary underline hover:text-primary" target="_blank" rel="noopener noreferrer">arbeiterkammer.at</a></li>
+        <li>Bundeskanzleramt - <a href="https://www.bundeskanzleramt.gv.at" class="text-secondary underline hover:text-primary" target="_blank" rel="noopener noreferrer">bundeskanzleramt.gv.at</a></li>
+      </ul>
+    </div>
+  </article>
+</Layout>

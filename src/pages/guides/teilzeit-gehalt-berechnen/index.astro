@@ -1,0 +1,186 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://nettolohn.at/" },
+    { "@type": "ListItem", "position": 2, "name": "Ratgeber", "item": "https://nettolohn.at/guides/" },
+    { "@type": "ListItem", "position": 3, "name": "Teilzeitgehalt berechnen", "item": "https://nettolohn.at/guides/teilzeit-gehalt-berechnen/" }
+  ]
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Wie berechnet man das Teilzeitgehalt in Österreich?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Das Teilzeitgehalt wird anteilig zum Beschäftigungsausmaß berechnet: Teilzeitgehalt = Vollzeitgehalt × (Teilzeitstunden / Vollzeitstunden). Bei 25 Stunden Teilzeit und 38,5 Stunden Vollzeit ergibt sich ein Faktor von 64,9 %. Dieser Faktor wird auf das Bruttogehalt angewendet, die Sonderzahlungen werden ebenfalls aliquotiert."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Zahlt man bei Teilzeit weniger Steuern pro Euro?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja, durch die progressive Besteuerung in Österreich sinkt der Durchschnittssteuersatz bei Teilzeit. Wer beispielsweise Vollzeit 3.500 € brutto verdient und auf 60 % Teilzeit (2.100 € brutto) reduziert, hat netto pro gearbeiteter Stunde oft sogar mehr als bei Vollzeit, da ein geringerer Steuersatz angewendet wird."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Hat Teilzeitarbeit Auswirkungen auf die Pension?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja, Teilzeitarbeit wirkt sich direkt auf die spätere Pension aus, da die Pensionshöhe von der Beitragsgrundlage (= Bruttogehalt) abhängt. Wer dauerhaft Teilzeit arbeitet, erwirbt niedrigere Pensionsansprüche. Es ist daher ratsam, die langfristigen Auswirkungen auf die Pension zu berücksichtigen und gegebenenfalls privat vorzusorgen."
+      }
+    }
+  ]
+};
+---
+
+<Layout
+  title="Teilzeitgehalt berechnen Österreich - Brutto, Netto & Auswirkungen | nettolohn.at"
+  description="Teilzeitgehalt in Österreich berechnen: Formel, Brutto-Netto-Vergleich, Auswirkungen auf Steuer, SV-Beiträge, Sonderzahlungen und Pension bei Teilzeit."
+>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <nav class="max-w-4xl mx-auto px-4 pt-6 text-sm text-gray-500" aria-label="Breadcrumb">
+    <ol class="flex flex-wrap items-center gap-1">
+      <li><a href="/" class="hover:text-primary transition-colors">Startseite</a></li>
+      <li class="before:content-['/'] before:mx-1"><a href="/guides/" class="hover:text-primary transition-colors">Ratgeber</a></li>
+      <li class="before:content-['/'] before:mx-1 text-gray-900 font-medium">Teilzeitgehalt berechnen</li>
+    </ol>
+  </nav>
+
+  <article class="max-w-4xl mx-auto px-4 py-10">
+    <div class="prose prose-lg max-w-none prose-headings:text-gray-900 prose-a:text-secondary prose-a:underline hover:prose-a:text-primary">
+      <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-6">Teilzeitgehalt berechnen in Österreich - So ermitteln Sie Ihr Netto</h1>
+
+      <p class="text-lg text-gray-700 leading-relaxed">Teilzeitarbeit ist in Österreich weit verbreitet - rund 30 % aller Beschäftigten arbeiten in Teilzeit, bei Frauen sind es sogar über 50 %. Ob Elternteilzeit, Altersteilzeit oder freiwillige Arbeitszeitreduktion: Die Berechnung des Teilzeitgehalts und vor allem die Netto-Auswirkungen sind für viele Arbeitnehmer nicht sofort durchschaubar. Dieser Ratgeber erklärt Ihnen Schritt für Schritt, wie Sie Ihr Teilzeitgehalt berechnen und welche steuerlichen Besonderheiten zu beachten sind.</p>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">Die Grundformel: Vom Vollzeit- zum Teilzeitgehalt</h2>
+      <p>Die Berechnung des Teilzeit-Bruttogehalts ist grundsätzlich einfach:</p>
+      <div class="bg-gray-100 p-4 rounded-lg my-4 text-center">
+        <p class="font-mono text-lg"><strong>Teilzeit-Brutto = Vollzeit-Brutto × (Teilzeitstunden ÷ Vollzeitstunden)</strong></p>
+      </div>
+      <p>Die Vollzeitstunden richten sich nach dem Kollektivvertrag bzw. dem Arbeitsvertrag. In den meisten österreichischen Branchen liegt die Vollzeit-Wochenstundenanzahl bei 38,5 oder 40 Stunden.</p>
+      <p><strong>Beispiel:</strong> Ein Angestellter verdient bei 38,5 Stunden Vollzeit 3.600 € brutto monatlich und reduziert auf 25 Stunden Teilzeit:</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li>Teilzeitfaktor: 25 ÷ 38,5 = 0,6494 (64,94 %)</li>
+        <li>Teilzeit-Brutto: 3.600 € × 0,6494 = 2.337,84 € brutto monatlich</li>
+        <li>Jahresbrutto (14 Gehälter): 2.337,84 € × 14 = 32.729,76 €</li>
+      </ul>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">Der Netto-Effekt: Warum Teilzeit pro Stunde mehr bringen kann</h2>
+      <p>Ein oft überraschendes Ergebnis: Durch die progressive Besteuerung in Österreich kann Teilzeitarbeit pro gearbeiteter Stunde ein höheres Nettogehalt ergeben als Vollzeitarbeit. Der Grund liegt in den niedrigeren Steuersätzen bei geringerem Einkommen.</p>
+      <p>Vergleichen wir das Beispiel von oben:</p>
+      <div class="overflow-x-auto my-6">
+        <table class="min-w-full border border-gray-200 rounded-lg text-sm">
+          <thead class="bg-gray-100">
+            <tr>
+              <th class="px-4 py-3 text-left font-semibold">Kennzahl</th>
+              <th class="px-4 py-3 text-left font-semibold">Vollzeit (38,5 h)</th>
+              <th class="px-4 py-3 text-left font-semibold">Teilzeit (25 h)</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-200">
+            <tr><td class="px-4 py-3">Brutto monatlich</td><td class="px-4 py-3">3.600 €</td><td class="px-4 py-3">2.338 €</td></tr>
+            <tr><td class="px-4 py-3">SV-Beiträge (18,07 %)</td><td class="px-4 py-3">−651 €</td><td class="px-4 py-3">−422 €</td></tr>
+            <tr><td class="px-4 py-3">Lohnsteuer (ca.)</td><td class="px-4 py-3">−487 €</td><td class="px-4 py-3">−218 €</td></tr>
+            <tr class="font-semibold bg-green-50"><td class="px-4 py-3">Netto monatlich</td><td class="px-4 py-3">2.462 €</td><td class="px-4 py-3">1.698 €</td></tr>
+            <tr class="font-semibold"><td class="px-4 py-3">Netto pro Stunde</td><td class="px-4 py-3">15,23 €</td><td class="px-4 py-3">16,18 €</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>In diesem Beispiel beträgt das Nettogehalt pro Stunde bei Teilzeit ca. 16,18 € gegenüber 15,23 € bei Vollzeit - ein Plus von 6,2 %. Dieser Effekt entsteht, weil bei Teilzeit ein größerer Anteil des Einkommens in den unteren (günstigeren) Steuerstufen besteuert wird.</p>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">Sonderzahlungen bei Teilzeit</h2>
+      <p>Die Sonderzahlungen (13. und 14. Gehalt) werden bei Teilzeit anteilig (aliquot) berechnet. Sie entsprechen dem monatlichen Teilzeit-Bruttogehalt und werden - wie bei Vollzeit - steuerlich begünstigt mit 6 % besteuert (nach einem Freibetrag von 620 €).</p>
+      <p>Im obigen Beispiel:</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li>Sonderzahlung Teilzeit: 2 × 2.338 € = 4.676 € brutto pro Jahr</li>
+        <li>SV-Beiträge auf SZ (ca. 17,07 %): −798 €</li>
+        <li>Steuerpflichtiger Anteil: 4.676 € − 798 € − 620 € (Freibetrag) = 3.258 €</li>
+        <li>Lohnsteuer auf SZ: 3.258 € × 6 % = 195 €</li>
+        <li>Netto-Sonderzahlungen: ca. 3.683 € pro Jahr</li>
+      </ul>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">Elternteilzeit in Österreich</h2>
+      <p>Eltern haben in Österreich unter bestimmten Voraussetzungen einen Rechtsanspruch auf Elternteilzeit nach dem Mutterschutzgesetz (MSchG) bzw. dem Väter-Karenzgesetz (VKG). Dieser Anspruch besteht:</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li>In Betrieben mit mehr als 20 Arbeitnehmern</li>
+        <li>Bei einer Betriebszugehörigkeit von mindestens 3 Jahren</li>
+        <li>Bis zum 7. Geburtstag des Kindes (oder bis zum späteren Schuleintritt)</li>
+      </ul>
+      <p>Die Mindestarbeitszeit bei Elternteilzeit beträgt 12 Wochenstunden. Eine Reduktion darunter ist nur mit Zustimmung des Arbeitgebers möglich. Während der Elternteilzeit besteht ein besonderer Kündigungsschutz.</p>
+      <p>Auch bei Elternteilzeit gelten die gleichen Grundsätze für die Gehaltsberechnung: Das Bruttogehalt wird anteilig berechnet, die Sonderzahlungen aliquotiert und die steuerliche Begünstigung der Sonderzahlungen bleibt bestehen.</p>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">Altersteilzeit</h2>
+      <p>Das Altersteilzeitmodell ermöglicht es älteren Arbeitnehmern (Frauen ab 53 Jahren, Männer ab 58 Jahren), die Arbeitszeit zu reduzieren. Dabei gibt es zwei Varianten:</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>Kontinuierliche Altersteilzeit:</strong> Die Arbeitszeit wird über den gesamten Zeitraum gleichmäßig reduziert (z. B. von 40 auf 20 Stunden).</li>
+        <li><strong>Geblockte Altersteilzeit:</strong> In der ersten Hälfte wird Vollzeit gearbeitet, in der zweiten Hälfte gar nicht - bei durchschnittlicher Entlohnung über den gesamten Zeitraum.</li>
+      </ul>
+      <p>Bei Altersteilzeit zahlt der Arbeitgeber einen Lohnausgleich von mindestens 50 % der Differenz zwischen altem und neuem Entgelt. Das AMS übernimmt einen Teil der Kosten. Die SV-Beiträge werden auf Basis des alten (höheren) Gehalts weiterberechnet, um Pensionsnachteile zu vermeiden.</p>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">Auswirkungen auf die Pension</h2>
+      <p>Teilzeitarbeit wirkt sich direkt auf die spätere Pension aus. In Österreich wird die Pensionshöhe im Wesentlichen durch die Beitragsgrundlage (= Bruttogehalt) und die Versicherungszeiten bestimmt. Bei Teilzeit ist die Beitragsgrundlage niedriger, was zu geringeren Pensionsansprüchen führt.</p>
+      <p>Ein Beispiel: Ein Arbeitnehmer, der 10 Jahre lang Teilzeit mit 50 % arbeitet, erwirbt in diesen 10 Jahren nur halb so hohe Pensionsgutschriften wie bei Vollzeitarbeit. Bei einer angenommenen Kontopension von 1,78 % pro Versicherungsjahr kann das über die gesamte Erwerbskarriere hinweg einen deutlichen Unterschied ausmachen.</p>
+      <p><strong>Tipp:</strong> Kindererziehungszeiten (bis zum 4. Lebensjahr des Kindes) werden in der Pensionsversicherung mit einer fiktiven Beitragsgrundlage von ca. 2.100 € monatlich bewertet - unabhängig davon, ob Teilzeit gearbeitet wird oder nicht. Das mildert den Pensionsnachteil in den ersten Lebensjahren des Kindes.</p>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">SV-Beiträge und Geringfügigkeit bei Teilzeit</h2>
+      <p>Bei sehr geringen Teilzeitstunden kann das monatliche Bruttogehalt unter die Geringfügigkeitsgrenze von 518,44 € (2025) fallen. In diesem Fall besteht nur Unfallversicherung, und es werden keine regulären SV-Beiträge abgeführt. Das hat jedoch negative Konsequenzen:</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li>Kein eigener Krankenversicherungsschutz (nur Mitversicherung beim Partner oder freiwillige Selbstversicherung)</li>
+        <li>Keine Pensionsversicherungszeiten</li>
+        <li>Kein Arbeitslosengeldanspruch</li>
+      </ul>
+      <p>Es ist daher wichtig, bei Teilzeitvereinbarungen die Geringfügigkeitsgrenze im Blick zu behalten und gegebenenfalls eine freiwillige Selbstversicherung abzuschließen.</p>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">Ermäßigte SV-Beiträge bei niedrigem Teilzeitgehalt</h2>
+      <p>Für Arbeitnehmer mit geringem Einkommen (unter 2.306 € brutto monatlich) gelten ermäßigte Sätze bei der Arbeitslosenversicherung. Unter 1.951 € entfällt der Arbeitnehmeranteil zur Arbeitslosenversicherung vollständig. Da viele Teilzeitbeschäftigte in diesen Bereich fallen, bedeutet das eine zusätzliche Netto-Entlastung.</p>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">Teilzeit und Pendlerpauschale</h2>
+      <p>Die Pendlerpauschale wird bei Teilzeit aliquotiert, wenn weniger als 11 Tage pro Monat an den Arbeitsort gefahren wird. Bei einer 3-Tage-Woche (ca. 13 Tage pro Monat) steht das volle Pendlerpauschale zu. Bei einer 2-Tage-Woche (ca. 9 Tage) nur zwei Drittel. Dies ist besonders relevant, wenn Teilzeit mit Homeoffice-Tagen kombiniert wird.</p>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">Teilzeitgehalt mit dem Brutto-Netto-Rechner berechnen</h2>
+      <p>Mit unserem Brutto-Netto-Rechner können Sie Ihr Teilzeitgehalt schnell und einfach berechnen. Geben Sie einfach das Teilzeit-Bruttogehalt ein (berechnet mit der Formel oben) und der Rechner zeigt Ihnen alle Abzüge, Sonderzahlungen und das Nettoergebnis. So können Sie verschiedene Teilzeitszenarien durchrechnen und eine fundierte Entscheidung treffen.</p>
+
+      <h2 class="text-2xl font-bold mt-10 mb-4">Häufig gestellte Fragen (FAQ)</h2>
+
+      <h3 class="text-xl font-semibold mt-6 mb-2">Wie berechnet man das Teilzeitgehalt in Österreich?</h3>
+      <p>Das Teilzeitgehalt wird anteilig zum Beschäftigungsausmaß berechnet: Teilzeitgehalt = Vollzeitgehalt × (Teilzeitstunden ÷ Vollzeitstunden). Bei 25 Stunden Teilzeit und 38,5 Stunden Vollzeit ergibt sich ein Faktor von 64,9 %. Dieser Faktor wird auf das Bruttogehalt angewendet, die Sonderzahlungen (13. und 14. Gehalt) werden ebenfalls aliquotiert.</p>
+
+      <h3 class="text-xl font-semibold mt-6 mb-2">Zahlt man bei Teilzeit weniger Steuern pro Euro?</h3>
+      <p>Ja, durch die progressive Besteuerung in Österreich sinkt der Durchschnittssteuersatz bei Teilzeit. Wer beispielsweise Vollzeit 3.500 € brutto verdient und auf 60 % Teilzeit reduziert, hat netto pro gearbeiteter Stunde oft sogar mehr als bei Vollzeit, da ein geringerer Steuersatz angewendet wird. Der Gesamtnettobetrag ist natürlich niedriger, aber die Effizienz pro Stunde steigt.</p>
+
+      <h3 class="text-xl font-semibold mt-6 mb-2">Hat Teilzeitarbeit Auswirkungen auf die Pension?</h3>
+      <p>Ja, Teilzeitarbeit wirkt sich direkt auf die spätere Pension aus, da die Pensionshöhe von der Beitragsgrundlage abhängt. Wer dauerhaft Teilzeit arbeitet, erwirbt niedrigere Pensionsansprüche. Kindererziehungszeiten werden jedoch mit einer fiktiven Beitragsgrundlage bewertet und mildern den Nachteil in den ersten Lebensjahren des Kindes ab.</p>
+    </div>
+
+    <div class="mt-12 bg-blue-50 border border-blue-200 rounded-xl p-6">
+      <h2 class="text-lg font-bold text-secondary mb-3">Verwandte Tools</h2>
+      <ul class="space-y-2 text-sm">
+        <li><a href="/" class="text-secondary underline hover:text-primary transition-colors">Brutto-Netto-Rechner Österreich</a> - Berechnen Sie Ihr Teilzeit-Nettogehalt</li>
+        <li><a href="/guides/sozialversicherung-beitraege/" class="text-secondary underline hover:text-primary transition-colors">Sozialversicherungsbeiträge</a> - SV-Beiträge bei Teilzeit verstehen</li>
+        <li><a href="/guides/13-14-gehalt/" class="text-secondary underline hover:text-primary transition-colors">13. und 14. Gehalt</a> - Sonderzahlungen bei Teilzeit</li>
+      </ul>
+    </div>
+
+    <div class="mt-8 border-t border-gray-200 pt-6">
+      <h2 class="text-lg font-bold text-gray-900 mb-3">Quellen</h2>
+      <ul class="space-y-1 text-sm text-gray-600">
+        <li>Arbeitszeitgesetz (AZG) - <a href="https://www.ris.bka.gv.at" class="text-secondary underline hover:text-primary" target="_blank" rel="noopener noreferrer">ris.bka.gv.at</a></li>
+        <li>Mutterschutzgesetz (MSchG) und Väter-Karenzgesetz (VKG)</li>
+        <li>Arbeiterkammer Österreich - <a href="https://www.arbeiterkammer.at" class="text-secondary underline hover:text-primary" target="_blank" rel="noopener noreferrer">arbeiterkammer.at</a></li>
+        <li>Statistik Austria - Teilzeitquoten: <a href="https://www.statistik.at" class="text-secondary underline hover:text-primary" target="_blank" rel="noopener noreferrer">statistik.at</a></li>
+      </ul>
+    </div>
+  </article>
+</Layout>

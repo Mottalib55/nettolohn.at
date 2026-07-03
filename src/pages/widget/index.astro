@@ -1,0 +1,84 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Widget - Brutto-Netto-Rechner einbetten | nettolohn.at" description="Betten Sie den oesterreichischen Brutto-Netto-Rechner kostenlos auf Ihrer Website ein. Einfacher iframe-Code zum Kopieren.">
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://nettolohn.at/" },
+      { "@type": "ListItem", "position": 2, "name": "Widget", "item": "https://nettolohn.at/widget/" }
+    ]
+  })} />
+
+  <section class="py-12 md:py-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto">
+      <nav class="text-sm text-gray-500 mb-6">
+        <a href="/" class="hover:text-primary">Startseite</a>
+        <span class="mx-1">/</span>
+        <span class="text-gray-900">Widget</span>
+      </nav>
+
+      <h1 class="text-4xl font-extrabold text-gray-900 mb-4">Brutto-Netto-Rechner auf Ihrer Website einbetten</h1>
+      <p class="text-gray-600 mb-8">
+        Sie koennen den oesterreichischen Brutto-Netto-Rechner kostenlos auf Ihrer eigenen Website einbinden.
+        Kopieren Sie einfach den folgenden Code und fuegen Sie ihn in Ihre Seite ein.
+      </p>
+
+      <div class="space-y-8">
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+          <h2 class="text-xl font-bold text-gray-900 mb-4">Einbettungscode</h2>
+          <p class="text-gray-600 mb-4">
+            Kopieren Sie den folgenden iframe-Code und fuegen Sie ihn an der gewuenschten Stelle in Ihre HTML-Seite ein:
+          </p>
+          <div class="bg-gray-900 text-green-400 rounded-lg p-4 overflow-x-auto">
+            <pre class="text-sm"><code>&lt;iframe
+  src="https://nettolohn.at/"
+  width="100%"
+  height="700"
+  style="border: none; border-radius: 8px; max-width: 600px;"
+  title="Brutto-Netto-Rechner Oesterreich"
+  loading="lazy"
+&gt;&lt;/iframe&gt;</code></pre>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+          <h2 class="text-xl font-bold text-gray-900 mb-4">Vorschau</h2>
+          <div class="border border-gray-200 rounded-lg p-4 bg-gray-50">
+            <iframe
+              src="https://nettolohn.at/"
+              width="100%"
+              height="700"
+              style="border: none; border-radius: 8px; max-width: 600px;"
+              title="Brutto-Netto-Rechner Oesterreich"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+          <h2 class="text-xl font-bold text-gray-900 mb-4">Anpassungsmoeglichkeiten</h2>
+          <p class="text-gray-600 mb-4">Sie koennen den iframe an Ihre Beduerfnisse anpassen:</p>
+          <ul class="list-disc list-inside text-gray-600 space-y-2">
+            <li><strong>Breite:</strong> Aendern Sie <code class="bg-gray-100 px-1 rounded text-sm">width="100%"</code> auf einen festen Wert, z.B. <code class="bg-gray-100 px-1 rounded text-sm">width="500"</code>.</li>
+            <li><strong>Hoehe:</strong> Passen Sie <code class="bg-gray-100 px-1 rounded text-sm">height="700"</code> an, um mehr oder weniger Inhalt anzuzeigen.</li>
+            <li><strong>Maximale Breite:</strong> Aendern Sie <code class="bg-gray-100 px-1 rounded text-sm">max-width</code> im style-Attribut.</li>
+          </ul>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+          <h2 class="text-xl font-bold text-gray-900 mb-4">Nutzungsbedingungen</h2>
+          <ul class="list-disc list-inside text-gray-600 space-y-2">
+            <li>Die Einbettung ist kostenlos und fuer alle Websites erlaubt.</li>
+            <li>Bitte aendern Sie den Inhalt des Rechners nicht.</li>
+            <li>Wir freuen uns ueber eine Verlinkung auf nettolohn.at, dies ist jedoch nicht verpflichtend.</li>
+            <li>Der Rechner wird regelmaessig aktualisiert. Sie profitieren automatisch von allen Updates.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

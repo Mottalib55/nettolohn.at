@@ -16,6 +16,7 @@ const canonicalURL = canonical ? new URL(canonical, Astro.site) : new URL(Astro.
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <meta name="robots" content="index, follow" />
+    <meta name="author" content="Mottalib Radif" />
     <link rel="canonical" href={canonicalURL} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta property="og:title" content={title} />
@@ -40,9 +41,42 @@ const canonicalURL = canonical ? new URL(canonical, Astro.site) : new URL(Astro.
       },
       "inLanguage": "de-AT"
     })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Nettolohn Rechner Osterreich",
+      "url": "https://nettolohn.at",
+      "logo": "https://nettolohn.at/favicon.svg",
+      "founder": {
+        "@type": "Person",
+        "name": "Mottalib Radif"
+      }
+    })} />
+
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Mottalib Radif",
+      "jobTitle": "Experte für Finanzplanung & Steuertechnologie",
+      "description": "MBA INSEAD Absolvent, begeistert von österreichischer Finanzplanung. Spezialisiert auf Lohnsteuer, Sozialversicherung und Gehaltsoptimierung.",
+      "alumniOf": { "@type": "EducationalOrganization", "name": "INSEAD" },
+      "image": "https://nettolohn.at/team/mottalib-radif.jpg",
+      "url": "https://nettolohn.at/ueber-uns/"
+    })} />
+
     <script defer data-domain="nettolohn.at" src="https://plausible.io/js/script.js"></script>
+
+    <!-- Google Analytics 4 — replace G-XXXXXXXXXX with real ID -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
   </head>
   <body class="min-h-screen flex flex-col">
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-white focus:text-blue-700 focus:rounded-lg focus:shadow-lg focus:ring-2 focus:ring-blue-500">Skip to content</a>
     <!-- Header -->
     <header class="bg-primary text-white shadow-lg">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -52,6 +86,7 @@ const canonicalURL = canonical ? new URL(canonical, Astro.site) : new URL(Astro.
           </a>
           <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
             <a href="/#rechner" class="hover:text-accent-light transition-colors">Rechner</a>
+            <a href="/guides/" class="hover:text-accent-light transition-colors">Ratgeber</a>
             <a href="/faq/" class="hover:text-accent-light transition-colors">FAQ</a>
             <a href="/impressum/" class="hover:text-accent-light transition-colors">Impressum</a>
             <a href="/datenschutz/" class="hover:text-accent-light transition-colors">Datenschutz</a>
@@ -67,6 +102,7 @@ const canonicalURL = canonical ? new URL(canonical, Astro.site) : new URL(Astro.
       <div id="mobile-menu" class="hidden md:hidden border-t border-white/20">
         <nav class="px-4 py-3 space-y-2">
           <a href="/#rechner" class="block py-2 text-sm font-medium hover:text-accent-light">Rechner</a>
+          <a href="/guides/" class="block py-2 text-sm font-medium hover:text-accent-light">Ratgeber</a>
           <a href="/faq/" class="block py-2 text-sm font-medium hover:text-accent-light">FAQ</a>
           <a href="/impressum/" class="block py-2 text-sm font-medium hover:text-accent-light">Impressum</a>
           <a href="/datenschutz/" class="block py-2 text-sm font-medium hover:text-accent-light">Datenschutz</a>
@@ -75,7 +111,7 @@ const canonicalURL = canonical ? new URL(canonical, Astro.site) : new URL(Astro.
     </header>
 
     <!-- Main Content -->
-    <main class="flex-1">
+    <main id="main-content" class="flex-1">
       <slot />
     </main>
 
@@ -91,6 +127,7 @@ const canonicalURL = canonical ? new URL(canonical, Astro.site) : new URL(Astro.
             <h4 class="text-white font-bold mb-3">Links</h4>
             <ul class="space-y-2 text-sm">
               <li><a href="/" class="hover:text-white transition-colors">Startseite</a></li>
+              <li><a href="/guides/" class="hover:text-white transition-colors">Ratgeber</a></li>
               <li><a href="/faq/" class="hover:text-white transition-colors">Häufige Fragen</a></li>
               <li><a href="/impressum/" class="hover:text-white transition-colors">Impressum</a></li>
               <li><a href="/datenschutz/" class="hover:text-white transition-colors">Datenschutz</a></li>

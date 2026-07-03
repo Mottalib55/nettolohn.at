@@ -1,0 +1,286 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Calculator from '../components/Calculator';
+import { bundeslandData } from '../lib/bundesland-data';
+import { gehaltData } from '../lib/gehalt-data';
+import { calculateSalary } from '../lib/engine';
+
+export function getStaticPaths() {
+  return bundeslandData.map((entry) => ({
+    params: { bundesland: entry.slug },
+    props: { entry },
+  }));
+}
+
+interface Props {
+  entry: typeof bundeslandData[number];
+}
+
+const { entry } = Astro.props;
+
+const title = `Gehaltsrechner ${entry.name} 2026 - Brutto Netto`;
+
+const formatCurrency = (value: number) =>
+  value.toLocaleString('de-AT', { style: 'currency', currency: 'EUR', minimumFractionDigits: 2 });
+
+// Calculate netto for average salary
+const avgResult = calculateSalary({
+  grossMonthly: entry.averageSalary,
+  children: 0,
+  alleinverdiener: false,
+  familienbonus: false,
+  pendlerpauschale: 0,
+});
+
+// Other Bundesländer
+const otherBundeslaender = bundeslandData.filter((b) => b.slug !== entry.slug);
+
+// Schema.org BreadcrumbList
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Startseite",
+      "item": "https://nettolohn.at/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": `Gehaltsrechner ${entry.name}`,
+      "item": `https://nettolohn.at/gehaltsrechner-${entry.slug}/`
+    }
+  ]
+};
+
+// Schema.org FAQPage
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": entry.faq.map((f) => ({
+    "@type": "Question",
+    "name": f.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": f.answer
+    }
+  }))
+};
+
+// Schema.org WebPage
+const webPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": title,
+  "description": entry.description,
+  "url": `https://nettolohn.at/gehaltsrechner-${entry.slug}/`,
+  "inLanguage": "de-AT",
+  "about": {
+    "@type": "Place",
+    "name": entry.name,
+    "containedInPlace": {
+      "@type": "Country",
+      "name": "Österreich"
+    }
+  }
+};
+---
+
+<Layout title={title} description={entry.description}>
+
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(webPageSchema)} />
+
+  <!-- Breadcrumb Navigation -->
+  <nav class="bg-white border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+      <ol class="flex items-center gap-2 text-sm text-gray-500">
+        <li><a href="/" class="hover:text-primary transition-colors">Startseite</a></li>
+        <li><span class="mx-1">/</span></li>
+        <li class="text-gray-900 font-medium">Gehaltsrechner {entry.name}</li>
+      </ol>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-secondary via-secondary-dark to-gray-900 text-white py-12 md:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-3xl md:text-5xl font-extrabold mb-4 leading-tight">
+        Gehaltsrechner {entry.name}<br />
+        <span class="text-accent-light">Brutto Netto 2026</span>
+      </h1>
+      <p class="text-lg md:text-xl text-white/90 max-w-3xl mx-auto">
+        {entry.description}
+      </p>
+    </div>
+  </section>
+
+  <!-- Average Salary Summary -->
+  <section class="py-10 px-4 sm:px-6 lg:px-8 bg-gray-50">
+    <div class="max-w-5xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-10">
+        <div class="bg-white rounded-2xl shadow-lg p-6 border border-gray-100 text-center">
+          <p class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-1">Durchschnittsgehalt Brutto</p>
+          <p class="text-2xl font-extrabold text-gray-900">{formatCurrency(entry.averageSalary)}</p>
+        </div>
+        <div class="bg-secondary rounded-2xl shadow-lg p-6 text-center text-white">
+          <p class="text-sm font-semibold text-white/80 uppercase tracking-wider mb-1">Durchschnitt Netto</p>
+          <p class="text-2xl font-extrabold">{formatCurrency(avgResult.netMonthly)}</p>
+        </div>
+        <div class="bg-white rounded-2xl shadow-lg p-6 border border-gray-100 text-center">
+          <p class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-1">SV monatlich</p>
+          <p class="text-2xl font-extrabold text-gray-900">{formatCurrency(avgResult.svMonthly.total)}</p>
+        </div>
+        <div class="bg-white rounded-2xl shadow-lg p-6 border border-gray-100 text-center">
+          <p class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-1">Lohnsteuer mtl.</p>
+          <p class="text-2xl font-extrabold text-gray-900">{formatCurrency(avgResult.incomeTaxMonthly)}</p>
+        </div>
+      </div>
+
+      <!-- Average Salary Breakdown -->
+      <div class="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
+        <div class="px-6 py-4 bg-gray-50 border-b border-gray-100">
+          <h2 class="text-xl font-bold text-gray-900">
+            Gehaltsberechnung für das Durchschnittsgehalt in {entry.name}
+          </h2>
+          <p class="text-sm text-gray-500 mt-1">Basis: {formatCurrency(entry.averageSalary)} brutto monatlich</p>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full">
+            <thead>
+              <tr class="bg-secondary text-white text-sm">
+                <th class="px-6 py-3 text-left font-semibold">Position</th>
+                <th class="px-6 py-3 text-right font-semibold">Betrag</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-100">
+              <tr class="font-bold bg-gray-50">
+                <td class="px-6 py-3">Bruttogehalt</td>
+                <td class="px-6 py-3 text-right">{formatCurrency(entry.averageSalary)}</td>
+              </tr>
+              <tr>
+                <td class="px-6 py-3 pl-10 text-gray-600">Krankenversicherung (3,87 %)</td>
+                <td class="px-6 py-3 text-right text-red-600">-{formatCurrency(avgResult.svMonthly.kv)}</td>
+              </tr>
+              <tr class="bg-gray-50">
+                <td class="px-6 py-3 pl-10 text-gray-600">Pensionsversicherung (10,25 %)</td>
+                <td class="px-6 py-3 text-right text-red-600">-{formatCurrency(avgResult.svMonthly.pv)}</td>
+              </tr>
+              <tr>
+                <td class="px-6 py-3 pl-10 text-gray-600">Arbeitslosenversicherung</td>
+                <td class="px-6 py-3 text-right text-red-600">-{formatCurrency(avgResult.svMonthly.av)}</td>
+              </tr>
+              <tr class="bg-gray-50 font-semibold">
+                <td class="px-6 py-3 text-gray-700">Sozialversicherung gesamt</td>
+                <td class="px-6 py-3 text-right text-red-600">-{formatCurrency(avgResult.svMonthly.total)}</td>
+              </tr>
+              <tr class="font-semibold">
+                <td class="px-6 py-3 text-gray-700">Lohnsteuer</td>
+                <td class="px-6 py-3 text-right text-red-600">-{formatCurrency(avgResult.incomeTaxMonthly)}</td>
+              </tr>
+              <tr class="bg-secondary/5 font-bold text-lg">
+                <td class="px-6 py-4 text-secondary">Nettogehalt</td>
+                <td class="px-6 py-4 text-right text-secondary">{formatCurrency(avgResult.netMonthly)}</td>
+              </tr>
+              <tr class="bg-gray-50">
+                <td class="px-6 py-3 text-gray-700">13./14. Gehalt (Netto je Zahlung)</td>
+                <td class="px-6 py-3 text-right font-semibold">{formatCurrency(avgResult.sonderzahlungen.netPerPayment)}</td>
+              </tr>
+              <tr class="font-bold text-lg">
+                <td class="px-6 py-4">Jahresnetto gesamt</td>
+                <td class="px-6 py-4 text-right text-secondary">{formatCurrency(avgResult.netAnnual)}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Economic Context -->
+  <section class="py-10 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto prose prose-lg prose-gray">
+      <h2 class="text-3xl font-bold text-gray-900 mb-6">
+        Gehalt und Arbeitsmarkt in {entry.name}
+      </h2>
+      <p>{entry.economicContext}</p>
+
+      <h3 class="text-2xl font-bold text-gray-800 mt-10 mb-4">
+        Gehaltsberechnung in {entry.name} - Was ist zu beachten?
+      </h3>
+      <p>
+        Die Berechnung des Nettogehalts in {entry.name} folgt denselben Regeln wie in ganz Österreich:
+        Vom Bruttogehalt werden Sozialversicherungsbeiträge (Kranken-, Pensions- und Arbeitslosenversicherung)
+        abgezogen, anschließend wird die Lohnsteuer nach dem progressiven Tarifsystem berechnet.
+        Regionale Unterschiede gibt es bei der Pendlerpauschale (je nach Entfernung und öffentlicher
+        Verkehrsanbindung) sowie bei branchenspezifischen Kollektivverträgen, die das Mindestgehalt festlegen.
+      </p>
+      <p>
+        Das durchschnittliche Bruttogehalt in {entry.name} beträgt rund {formatCurrency(entry.averageSalary)} monatlich.
+        Nach Abzug aller Abgaben verbleiben davon ca. {formatCurrency(avgResult.netMonthly)} netto.
+        Mit den begünstigt besteuerten Sonderzahlungen (13. und 14. Gehalt) ergibt sich ein
+        Jahresnetto von rund {formatCurrency(avgResult.netAnnual)}.
+      </p>
+    </div>
+  </section>
+
+  <!-- Calculator Section -->
+  <section class="py-10 px-4 sm:px-6 lg:px-8 bg-gray-50">
+    <div class="max-w-5xl mx-auto">
+      <h2 class="text-3xl font-bold text-gray-900 mb-6 text-center">
+        Brutto-Netto-Rechner für {entry.name}
+      </h2>
+      <p class="text-center text-gray-600 mb-8 max-w-2xl mx-auto">
+        Berechnen Sie Ihr persönliches Nettogehalt in {entry.name}. Berücksichtigen Sie
+        Kinder, Familienbonus Plus, Alleinverdienerabsetzbetrag und Pendlerpauschale.
+      </p>
+      <Calculator client:idle />
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-10 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8">Häufige Fragen zum Gehalt in {entry.name}</h2>
+      <div class="space-y-6">
+        {entry.faq.map((f) => (
+          <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+            <h3 class="text-lg font-bold text-gray-900 mb-3">{f.question}</h3>
+            <p class="text-gray-600">{f.answer}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Cross-Links -->
+  <section class="py-10 px-4 sm:px-6 lg:px-8 bg-gray-50">
+    <div class="max-w-4xl mx-auto">
+      <!-- Other Bundesländer -->
+      <h3 class="text-xl font-bold text-gray-900 mb-4">Gehaltsrechner für andere Bundesländer</h3>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 mb-10">
+        {otherBundeslaender.map((b) => (
+          <a href={`/gehaltsrechner-${b.slug}/`} class="bg-white rounded-lg shadow-sm border border-gray-200 p-4 hover:border-secondary hover:shadow-md transition-all group">
+            <p class="font-bold text-gray-900 group-hover:text-secondary transition-colors">{b.name}</p>
+            <p class="text-xs text-gray-500 mt-1">Durchschnitt: {formatCurrency(b.averageSalary)}</p>
+          </a>
+        ))}
+      </div>
+
+      <!-- Salary Level Links -->
+      <h3 class="text-xl font-bold text-gray-900 mb-4">Beliebte Gehaltsstufen</h3>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+        {gehaltData.map((g) => (
+          <a href={`/gehalt-${g.slug}-brutto-netto/`} class="bg-white rounded-lg shadow-sm border border-gray-200 p-3 hover:border-primary hover:shadow-md transition-all text-center group">
+            <p class="font-bold text-gray-900 group-hover:text-primary transition-colors">{g.bruttoMonatlich.toLocaleString('de-AT')} € Brutto</p>
+            <p class="text-xs text-gray-500">Netto: {formatCurrency(g.nettoMonatlich)}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+</Layout>

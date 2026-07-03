@@ -95,7 +95,7 @@
 
 **Jahresbrutto:** € 112.000,00 (14 × 8.000)
 
-**Hinweis:** Die SV-Beiträge sind bei € 6.060 gedeckelt. Die effektive SV-Rate sinkt 
+**Hinweis:** Die SV-Beiträge sind bei € 6.060 gedeckelt. Die effektive SV-Rate sinkt
 von ~17,12% (bei € 3.000) auf ~12,97% (bei € 8.000) durch die Deckelung.
 
 ---
@@ -107,3 +107,46 @@ von ~17,12% (bei € 3.000) auf ~12,97% (bei € 8.000) durch die Deckelung.
 3. Die Berechnung der Sonderzahlungen folgt den Bestimmungen des § 67 EStG (6% Pauschalbesteuerung, € 620 Freibetrag).
 4. Die Höchstbeitragsgrundlage wurde korrekt als monatliche Obergrenze implementiert.
 5. Alle Absetzbeträge (Verkehrsabsetzbetrag, Familienbonus Plus, AVAB) entsprechen den aktuellen Werten.
+
+---
+
+## Build status
+
+- **Build:** 34 pages, 0 errors
+- **Tests:** 26/26 passed
+- **Sitemap:** auto-generated (sitemap-index.xml)
+
+## Page inventory (34 pages)
+
+| Category | Count | Details |
+|---|---|---|
+| Home + legal | 3 | index, impressum, datenschutz |
+| Tool pages | 1 | faq |
+| Guides index | 1 | /guides/ |
+| Guide articles | 8 | lohnsteuer-oesterreich, sozialversicherung-beitraege, 13-14-gehalt, familienbonus-plus, pendlerpauschale, gehaltsverhandlung-tipps, teilzeit-gehalt-berechnen, steuerausgleich-arbeitnehmerveranlagung |
+| Salary pages | 12 | gehalt-[brutto]-brutto-netto (12 salary levels) |
+| Bundesland pages | 9 | gehaltsrechner-[bundesland] (9 Austrian states) |
+
+## Components
+
+- SalaryCalculator.tsx (Austrian gross-to-net calculator with Sonderzahlungen)
+
+## Data files
+
+- baremes-2026.ts — Austrian tax brackets, SV rates, Absetzbeträge, Familienbonus
+- gehalts-data.ts — 12 salary entries with pre-calculated examples
+- bundeslaender-data.ts — 9 Bundesland entries with regional context
+
+## Quality gates
+
+- [x] Build passes (34 pages, 0 errors)
+- [x] Tests pass (26/26)
+- [x] Sitemap generated
+- [x] Schema.org on every page (WebApplication, FAQPage, BreadcrumbList)
+- [x] Analytics: Plausible + GA4 placeholder
+- [x] robots.txt present
+- [x] llms.txt present
+- [x] All guide pages > 1500 words
+- [x] Disclaimer in footer
+- [x] Mobile-responsive navigation (hamburger menu)
+- [x] Internal cross-linking between tools and guides
