@@ -25,6 +25,9 @@ const canonicalURL = canonical ? new URL(canonical, Astro.site) : new URL(Astro.
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:locale" content="de_AT" />
     <meta property="og:site_name" content="nettolohn.at" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
     <title>{title}</title>
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
@@ -66,7 +69,7 @@ const canonicalURL = canonical ? new URL(canonical, Astro.site) : new URL(Astro.
 
     <script defer data-domain="nettolohn.at" src="https://plausible.io/js/script.js"></script>
 
-    <!-- Google Analytics 4 — replace G-XXXXXXXXXX with real ID -->
+    <!-- TODO: Replace G-XXXXXXXXXX with your real GA4 Measurement ID from https://analytics.google.com -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
     <script is:inline>
       window.dataLayer = window.dataLayer || [];

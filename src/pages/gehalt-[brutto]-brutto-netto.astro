@@ -2,6 +2,21 @@
 import Layout from '../layouts/Layout.astro';
 import Calculator from '../components/Calculator';
 import { gehaltData } from '../lib/gehalt-data';
+import {
+  getBandContext,
+  getCareerDescription,
+  getTaxTips,
+  buildFaqs,
+  getRaiseSimulation,
+  getBudgetBreakdown,
+  getUniqueComparisons,
+  getSonderzahlungenContext,
+  getWorkLifeContext,
+  getTaxBracketExplanation,
+  getKollektivvertragInfo,
+  getNettoOptimierung,
+  getGehaltsZusammensetzung,
+} from '../lib/salary-content';
 
 export function getStaticPaths() {
   return gehaltData.map((entry) => ({
@@ -16,7 +31,7 @@ interface Props {
 
 const { entry } = Astro.props;
 
-const title = `${entry.bruttoMonatlich.toLocaleString('de-AT')} € Brutto in Netto 2026 - Gehaltsrechner Österreich`;
+const title = `${entry.bruttoMonatlich.toLocaleString('de-AT')} \u20ac Brutto in Netto 2026 - Gehaltsrechner \u00d6sterreich`;
 
 const formatCurrency = (value: number) =>
   value.toLocaleString('de-AT', { style: 'currency', currency: 'EUR', minimumFractionDigits: 2 });
@@ -27,6 +42,21 @@ const formatPercent = (value: number) => (value * 100).toFixed(1) + ' %';
 const currentIndex = gehaltData.findIndex((e) => e.slug === entry.slug);
 const prevEntry = currentIndex > 0 ? gehaltData[currentIndex - 1] : null;
 const nextEntry = currentIndex < gehaltData.length - 1 ? gehaltData[currentIndex + 1] : null;
+
+// Generate unique content
+const bandContext = getBandContext(entry);
+const careerDescription = getCareerDescription(entry);
+const taxTips = getTaxTips(entry);
+const faqs = buildFaqs(entry);
+const raiseSimulation = getRaiseSimulation(entry);
+const budgetBreakdown = getBudgetBreakdown(entry);
+const uniqueComparisons = getUniqueComparisons(entry, gehaltData);
+const sonderzahlungenContext = getSonderzahlungenContext(entry);
+const workLifeContext = getWorkLifeContext(entry);
+const taxBracketExplanation = getTaxBracketExplanation(entry);
+const kollektivvertragInfo = getKollektivvertragInfo(entry);
+const nettoOptimierung = getNettoOptimierung(entry);
+const gehaltsZusammensetzung = getGehaltsZusammensetzung(entry);
 
 // Schema.org BreadcrumbList
 const breadcrumbSchema = {
@@ -42,7 +72,7 @@ const breadcrumbSchema = {
     {
       "@type": "ListItem",
       "position": 2,
-      "name": `${entry.bruttoMonatlich.toLocaleString('de-AT')} € Brutto in Netto`,
+      "name": `${entry.bruttoMonatlich.toLocaleString('de-AT')} \u20ac Brutto in Netto`,
       "item": `https://nettolohn.at/gehalt-${entry.slug}-brutto-netto/`
     }
   ]
@@ -52,7 +82,7 @@ const breadcrumbSchema = {
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  "mainEntity": entry.faq.map((f) => ({
+  "mainEntity": faqs.map((f) => ({
     "@type": "Question",
     "name": f.question,
     "acceptedAnswer": {
@@ -74,17 +104,32 @@ const faqSchema = {
       <ol class="flex items-center gap-2 text-sm text-gray-500">
         <li><a href="/" class="hover:text-primary transition-colors">Startseite</a></li>
         <li><span class="mx-1">/</span></li>
-        <li class="text-gray-900 font-medium">{entry.bruttoMonatlich.toLocaleString('de-AT')} € Brutto in Netto</li>
+        <li class="text-gray-900 font-medium">{entry.bruttoMonatlich.toLocaleString('de-AT')} &euro; Brutto in Netto</li>
       </ol>
     </div>
   </nav>
+
+  <!-- Trust badge / Author byline -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+    <div class="flex flex-wrap items-center gap-3 text-xs text-gray-500">
+      <span class="inline-flex items-center gap-1 rounded-full bg-primary/10 px-2.5 py-1 font-medium text-gray-900">
+        <svg class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" />
+        </svg>
+        Aktualisiert f&uuml;r 2026
+      </span>
+      <span>
+        Von <a href="/ueber-uns/" class="font-medium text-gray-700 hover:text-primary">Mottalib Radif, MBA INSEAD</a>
+      </span>
+    </div>
+  </div>
 
   <!-- Hero Section -->
   <section class="bg-gradient-to-br from-primary via-primary-dark to-gray-900 text-white py-12 md:py-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <h1 class="text-3xl md:text-5xl font-extrabold mb-4 leading-tight">
-        {entry.bruttoMonatlich.toLocaleString('de-AT')} € Brutto in Netto<br />
-        <span class="text-accent-light">Österreich 2026</span>
+        {entry.bruttoMonatlich.toLocaleString('de-AT')} &euro; Brutto in Netto<br />
+        <span class="text-accent-light">&Ouml;sterreich 2026</span>
       </h1>
       <p class="text-lg md:text-xl text-white/90 max-w-3xl mx-auto">
         {entry.description}
@@ -113,7 +158,7 @@ const faqSchema = {
       <!-- Detailed Breakdown Table -->
       <div class="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
         <div class="px-6 py-4 bg-gray-50 border-b border-gray-100">
-          <h2 class="text-xl font-bold text-gray-900">Detaillierte Gehaltsaufschlüsselung</h2>
+          <h2 class="text-xl font-bold text-gray-900">Detaillierte Gehaltsaufschl&uuml;sselung</h2>
         </div>
         <div class="overflow-x-auto">
           <table class="w-full">
@@ -121,7 +166,7 @@ const faqSchema = {
               <tr class="bg-primary text-white text-sm">
                 <th class="px-6 py-3 text-left font-semibold">Position</th>
                 <th class="px-6 py-3 text-right font-semibold">Monatlich</th>
-                <th class="px-6 py-3 text-right font-semibold">Jährlich (14×)</th>
+                <th class="px-6 py-3 text-right font-semibold">J&auml;hrlich (14&times;)</th>
               </tr>
             </thead>
             <tbody class="divide-y divide-gray-100">
@@ -164,9 +209,35 @@ const faqSchema = {
           </table>
         </div>
       </div>
+    </div>
+  </section>
 
-      <!-- Sonderzahlungen -->
-      <div class="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden mt-8">
+  <!-- Band Context & Career Section -->
+  <section class="py-10 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto prose prose-lg prose-gray">
+      <h2 class="text-3xl font-bold text-gray-900 mb-6">
+        Was bedeutet ein Gehalt von {entry.bruttoMonatlich.toLocaleString('de-AT')} &euro; brutto in &Ouml;sterreich?
+      </h2>
+      <p>{bandContext}</p>
+
+      <h3 class="text-2xl font-bold text-gray-800 mt-10 mb-4">Typische Berufe mit {entry.bruttoMonatlich.toLocaleString('de-AT')} &euro; Bruttogehalt</h3>
+      <p>{careerDescription}</p>
+
+      <h3 class="text-2xl font-bold text-gray-800 mt-10 mb-4">So setzt sich Ihr Nettogehalt zusammen</h3>
+      <p>{gehaltsZusammensetzung}</p>
+
+      <h3 class="text-2xl font-bold text-gray-800 mt-10 mb-4">Steuertarif-Zerlegung bei {entry.bruttoMonatlich.toLocaleString('de-AT')} &euro; Brutto</h3>
+      <p>{taxBracketExplanation}</p>
+
+      <h3 class="text-2xl font-bold text-gray-800 mt-10 mb-4">Kollektivvertrag und Gehaltseinordnung</h3>
+      <p>{kollektivvertragInfo}</p>
+    </div>
+  </section>
+
+  <!-- Sonderzahlungen Detail Section -->
+  <section class="py-10 px-4 sm:px-6 lg:px-8 bg-gray-50">
+    <div class="max-w-5xl mx-auto">
+      <div class="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
         <div class="px-6 py-4 bg-gray-50 border-b border-gray-100">
           <h2 class="text-xl font-bold text-gray-900">13. und 14. Gehalt (Sonderzahlungen)</h2>
         </div>
@@ -199,43 +270,69 @@ const faqSchema = {
           </table>
         </div>
         <div class="px-6 py-4 bg-gray-50 border-t border-gray-100">
-          <p class="text-sm text-gray-600">
-            Die Sonderzahlungen werden mit nur 6 % pauschal besteuert (nach Abzug von SV und 620 € Freibetrag) -
-            deutlich weniger als der reguläre Lohnsteuertarif. Dadurch ist das Netto pro Sonderzahlung
-            ({formatCurrency(entry.sonderzahlungNetto)}) höher als das reguläre Monatsnetto ({formatCurrency(entry.nettoMonatlich)}).
-          </p>
+          <p class="text-sm text-gray-600">{sonderzahlungenContext}</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Context Section -->
+  <!-- Unique Comparisons Section -->
   <section class="py-10 px-4 sm:px-6 lg:px-8">
     <div class="max-w-4xl mx-auto prose prose-lg prose-gray">
       <h2 class="text-3xl font-bold text-gray-900 mb-6">
-        Was bedeutet ein Gehalt von {entry.bruttoMonatlich.toLocaleString('de-AT')} € brutto in Österreich?
+        Gehaltsvergleich: {entry.bruttoMonatlich.toLocaleString('de-AT')} &euro; im Kontext
       </h2>
-      <p>{entry.context}</p>
+      <p>{uniqueComparisons}</p>
+    </div>
+  </section>
 
-      <h3 class="text-2xl font-bold text-gray-800 mt-10 mb-4">So setzt sich Ihr Nettogehalt zusammen</h3>
-      <p>
-        Von Ihrem Bruttogehalt in Höhe von {formatCurrency(entry.bruttoMonatlich)} werden zunächst
-        {formatCurrency(entry.svGesamt)} an Sozialversicherungsbeiträgen abgezogen. Diese teilen sich auf in
-        {formatCurrency(entry.svKV)} Krankenversicherung, {formatCurrency(entry.svPV)} Pensionsversicherung
-        und {formatCurrency(entry.svAV)} Arbeitslosenversicherung. Auf das verbleibende steuerpflichtige
-        Einkommen von {formatCurrency(entry.steuerpflichtigesEinkommen)} entfällt eine monatliche
-        Lohnsteuer von {formatCurrency(entry.lohnsteuerMonatlich)}. Nach allen Abzügen verbleiben
-        {formatCurrency(entry.nettoMonatlich)} netto auf Ihrem Konto.
-      </p>
+  <!-- Raise Simulation Section -->
+  <section class="py-10 px-4 sm:px-6 lg:px-8 bg-gray-50">
+    <div class="max-w-4xl mx-auto prose prose-lg prose-gray">
+      <h2 class="text-3xl font-bold text-gray-900 mb-6">
+        Gehaltserh&ouml;hung bei {entry.bruttoMonatlich.toLocaleString('de-AT')} &euro; brutto: Was bleibt netto?
+      </h2>
+      <p>{raiseSimulation}</p>
+    </div>
+  </section>
 
-      <h3 class="text-2xl font-bold text-gray-800 mt-10 mb-4">Jahresbetrachtung mit Sonderzahlungen</h3>
-      <p>
-        In Österreich erhalten Sie 14 Monatsgehälter pro Jahr. Bei {formatCurrency(entry.bruttoMonatlich)} brutto
-        ergibt das ein Jahresbrutto von {formatCurrency(entry.bruttoJaehrlich)}. Die beiden Sonderzahlungen
-        (13. und 14. Gehalt) bringen jeweils {formatCurrency(entry.sonderzahlungNetto)} netto dank der
-        begünstigten Pauschalbesteuerung mit nur 6 %. Insgesamt ergibt sich ein Jahresnetto von
-        {formatCurrency(entry.nettoJaehrlich)}.
-      </p>
+  <!-- Tax Tips Section -->
+  <section class="py-10 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto prose prose-lg prose-gray">
+      <h2 class="text-3xl font-bold text-gray-900 mb-6">
+        Steuertipps f&uuml;r {entry.bruttoMonatlich.toLocaleString('de-AT')} &euro; Brutto
+      </h2>
+      <p>{taxTips}</p>
+    </div>
+  </section>
+
+  <!-- Netto Optimierung Section -->
+  <section class="py-10 px-4 sm:px-6 lg:px-8 bg-gray-50">
+    <div class="max-w-4xl mx-auto prose prose-lg prose-gray">
+      <h2 class="text-3xl font-bold text-gray-900 mb-6">
+        Netto-Optimierung bei {entry.bruttoMonatlich.toLocaleString('de-AT')} &euro; Brutto
+      </h2>
+      <p>{nettoOptimierung}</p>
+    </div>
+  </section>
+
+  <!-- Budget Breakdown Section -->
+  <section class="py-10 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto prose prose-lg prose-gray">
+      <h2 class="text-3xl font-bold text-gray-900 mb-6">
+        Budgetplanung mit {formatCurrency(entry.nettoMonatlich)} Netto
+      </h2>
+      <p>{budgetBreakdown}</p>
+    </div>
+  </section>
+
+  <!-- Work-Life Context Section -->
+  <section class="py-10 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto prose prose-lg prose-gray">
+      <h2 class="text-3xl font-bold text-gray-900 mb-6">
+        Leben mit {formatCurrency(entry.nettoMonatlich)} Netto in &Ouml;sterreich
+      </h2>
+      <p>{workLifeContext}</p>
     </div>
   </section>
 
@@ -244,7 +341,7 @@ const faqSchema = {
     <div class="max-w-5xl mx-auto">
       <h2 class="text-3xl font-bold text-gray-900 mb-6 text-center">Eigenes Gehalt berechnen</h2>
       <p class="text-center text-gray-600 mb-8 max-w-2xl mx-auto">
-        Passen Sie die Berechnung an Ihre persönliche Situation an - mit Kindern, Familienbonus Plus,
+        Passen Sie die Berechnung an Ihre pers&ouml;nliche Situation an &mdash; mit Kindern, Familienbonus Plus,
         Alleinverdienerabsetzbetrag und Pendlerpauschale.
       </p>
       <Calculator client:idle />
@@ -252,11 +349,11 @@ const faqSchema = {
   </section>
 
   <!-- FAQ Section -->
-  <section class="py-10 px-4 sm:px-6 lg:px-8">
+  <section class="py-10 px-4 sm:px-6 lg:px-8 bg-gray-50">
     <div class="max-w-4xl mx-auto">
-      <h2 class="text-3xl font-bold text-gray-900 mb-8">Häufige Fragen zu {entry.bruttoMonatlich.toLocaleString('de-AT')} € Brutto</h2>
+      <h2 class="text-3xl font-bold text-gray-900 mb-8">H&auml;ufige Fragen zu {entry.bruttoMonatlich.toLocaleString('de-AT')} &euro; Brutto</h2>
       <div class="space-y-6">
-        {entry.faq.map((f) => (
+        {faqs.map((f) => (
           <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
             <h3 class="text-lg font-bold text-gray-900 mb-3">{f.question}</h3>
             <p class="text-gray-600">{f.answer}</p>
@@ -267,21 +364,21 @@ const faqSchema = {
   </section>
 
   <!-- Cross-Links -->
-  <section class="py-10 px-4 sm:px-6 lg:px-8 bg-gray-50">
+  <section class="py-10 px-4 sm:px-6 lg:px-8">
     <div class="max-w-4xl mx-auto">
       <!-- Adjacent Salaries -->
       <div class="flex flex-col sm:flex-row gap-4 mb-8">
         {prevEntry && (
           <a href={`/gehalt-${prevEntry.slug}-brutto-netto/`} class="flex-1 bg-white rounded-xl shadow-sm border border-gray-200 p-5 hover:border-primary hover:shadow-md transition-all group">
             <p class="text-sm text-gray-500 mb-1">&larr; Niedrigeres Gehalt</p>
-            <p class="text-lg font-bold text-gray-900 group-hover:text-primary transition-colors">{prevEntry.bruttoMonatlich.toLocaleString('de-AT')} € Brutto in Netto</p>
+            <p class="text-lg font-bold text-gray-900 group-hover:text-primary transition-colors">{prevEntry.bruttoMonatlich.toLocaleString('de-AT')} &euro; Brutto in Netto</p>
             <p class="text-sm text-gray-500">Netto: {formatCurrency(prevEntry.nettoMonatlich)}</p>
           </a>
         )}
         {nextEntry && (
           <a href={`/gehalt-${nextEntry.slug}-brutto-netto/`} class="flex-1 bg-white rounded-xl shadow-sm border border-gray-200 p-5 hover:border-primary hover:shadow-md transition-all group text-right">
-            <p class="text-sm text-gray-500 mb-1">Höheres Gehalt &rarr;</p>
-            <p class="text-lg font-bold text-gray-900 group-hover:text-primary transition-colors">{nextEntry.bruttoMonatlich.toLocaleString('de-AT')} € Brutto in Netto</p>
+            <p class="text-sm text-gray-500 mb-1">H&ouml;heres Gehalt &rarr;</p>
+            <p class="text-lg font-bold text-gray-900 group-hover:text-primary transition-colors">{nextEntry.bruttoMonatlich.toLocaleString('de-AT')} &euro; Brutto in Netto</p>
             <p class="text-sm text-gray-500">Netto: {formatCurrency(nextEntry.nettoMonatlich)}</p>
           </a>
         )}
@@ -292,7 +389,7 @@ const faqSchema = {
       <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
         {gehaltData.filter((e) => e.slug !== entry.slug).map((e) => (
           <a href={`/gehalt-${e.slug}-brutto-netto/`} class="bg-white rounded-lg shadow-sm border border-gray-200 p-3 hover:border-primary hover:shadow-md transition-all text-center group">
-            <p class="font-bold text-gray-900 group-hover:text-primary transition-colors">{e.bruttoMonatlich.toLocaleString('de-AT')} €</p>
+            <p class="font-bold text-gray-900 group-hover:text-primary transition-colors">{e.bruttoMonatlich.toLocaleString('de-AT')} &euro;</p>
             <p class="text-xs text-gray-500">Netto: {formatCurrency(e.nettoMonatlich)}</p>
           </a>
         ))}
@@ -305,10 +402,10 @@ const faqSchema = {
           <p class="font-semibold text-gray-900 group-hover:text-secondary transition-colors">Wien</p>
         </a>
         <a href="/gehaltsrechner-niederoesterreich/" class="bg-white rounded-lg shadow-sm border border-gray-200 p-3 hover:border-secondary hover:shadow-md transition-all text-center group">
-          <p class="font-semibold text-gray-900 group-hover:text-secondary transition-colors">Niederösterreich</p>
+          <p class="font-semibold text-gray-900 group-hover:text-secondary transition-colors">Nieder&ouml;sterreich</p>
         </a>
         <a href="/gehaltsrechner-oberoesterreich/" class="bg-white rounded-lg shadow-sm border border-gray-200 p-3 hover:border-secondary hover:shadow-md transition-all text-center group">
-          <p class="font-semibold text-gray-900 group-hover:text-secondary transition-colors">Oberösterreich</p>
+          <p class="font-semibold text-gray-900 group-hover:text-secondary transition-colors">Ober&ouml;sterreich</p>
         </a>
         <a href="/gehaltsrechner-salzburg/" class="bg-white rounded-lg shadow-sm border border-gray-200 p-3 hover:border-secondary hover:shadow-md transition-all text-center group">
           <p class="font-semibold text-gray-900 group-hover:text-secondary transition-colors">Salzburg</p>
@@ -317,7 +414,7 @@ const faqSchema = {
           <p class="font-semibold text-gray-900 group-hover:text-secondary transition-colors">Tirol</p>
         </a>
         <a href="/gehaltsrechner-kaernten/" class="bg-white rounded-lg shadow-sm border border-gray-200 p-3 hover:border-secondary hover:shadow-md transition-all text-center group">
-          <p class="font-semibold text-gray-900 group-hover:text-secondary transition-colors">Kärnten</p>
+          <p class="font-semibold text-gray-900 group-hover:text-secondary transition-colors">K&auml;rnten</p>
         </a>
         <a href="/gehaltsrechner-steiermark/" class="bg-white rounded-lg shadow-sm border border-gray-200 p-3 hover:border-secondary hover:shadow-md transition-all text-center group">
           <p class="font-semibold text-gray-900 group-hover:text-secondary transition-colors">Steiermark</p>
@@ -329,6 +426,39 @@ const faqSchema = {
           <p class="font-semibold text-gray-900 group-hover:text-secondary transition-colors">Vorarlberg</p>
         </a>
       </div>
+    </div>
+  </section>
+
+  <!-- Quellen / Sources -->
+  <section class="py-10 px-4 sm:px-6 lg:px-8 bg-gray-50">
+    <div class="max-w-4xl mx-auto">
+      <h3 class="text-xl font-bold text-gray-900 mb-4">Quellen</h3>
+      <p class="text-sm text-gray-600 mb-4">
+        Unsere Berechnungen basieren auf den aktuellen gesetzlichen Grundlagen und offiziellen Daten folgender Institutionen:
+      </p>
+      <ul class="space-y-3 text-sm text-gray-700">
+        <li class="flex items-start gap-2">
+          <span class="text-primary mt-0.5">&bull;</span>
+          <span>
+            <a href="https://www.bmf.gv.at" target="_blank" rel="noopener noreferrer" class="text-primary font-semibold hover:underline">Bundesministerium f&uuml;r Finanzen (BMF)</a>
+            &mdash; Lohnsteuertabellen, Steuerrecht und Absetzbetr&auml;ge 2026
+          </span>
+        </li>
+        <li class="flex items-start gap-2">
+          <span class="text-primary mt-0.5">&bull;</span>
+          <span>
+            <a href="https://www.sozialversicherung.at" target="_blank" rel="noopener noreferrer" class="text-primary font-semibold hover:underline">Dachverband der Sozialversicherungstr&auml;ger</a>
+            &mdash; Beitragsgrundlagen, H&ouml;chstbeitragsgrundlage und Sozialversicherungss&auml;tze 2026
+          </span>
+        </li>
+        <li class="flex items-start gap-2">
+          <span class="text-primary mt-0.5">&bull;</span>
+          <span>
+            <a href="https://www.statistik.at" target="_blank" rel="noopener noreferrer" class="text-primary font-semibold hover:underline">Statistik Austria</a>
+            &mdash; Einkommensstatistiken, Medianeinkommen und Verdienststrukturerhebung
+          </span>
+        </li>
+      </ul>
     </div>
   </section>
 

@@ -68,4 +68,91 @@ import Layout from '../../layouts/Layout.astro';
     </div>
   </section>
 
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Wie genau ist der Brutto-Netto-Rechner?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Unser Rechner basiert auf den offiziellen Steuer- und Sozialversicherungsdaten für das Jahr 2026. Die Ergebnisse bieten eine sehr gute Annäherung an Ihr tatsächliches Nettogehalt. Individuelle Faktoren wie besondere Freibeträge, Sachbezüge oder außergewöhnliche Belastungen können jedoch zu Abweichungen führen."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Was sind die Sozialversicherungsbeiträge in Österreich?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Als Arbeitnehmer zahlen Sie Krankenversicherung (3,87 %), Pensionsversicherung (10,25 %) und Arbeitslosenversicherung (0 % bis 3 %, gestaffelt nach Einkommen). Die Beiträge werden bis zur Höchstbeitragsgrundlage von \u20ac 6.060 pro Monat berechnet."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Wie werden das 13. und 14. Gehalt besteuert?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Die Sonderzahlungen (Urlaubsgeld und Weihnachtsgeld) werden in Österreich steuerlich begünstigt. Nach Abzug der Sozialversicherungsbeiträge und eines Freibetrags von \u20ac 620 wird ein pauschaler Steuersatz von nur 6 % angewendet - deutlich weniger als der reguläre Steuertarif."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Was ist der Familienbonus Plus?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Der Familienbonus Plus ist ein Steuerabsetzbetrag für Familien mit Kindern. Er beträgt \u20ac 2.000 pro Kind und Jahr für Kinder unter 18 Jahren und \u20ac 700 für volljährige Kinder in Ausbildung. Der Bonus wird direkt von der Einkommensteuer abgezogen und kann zwischen beiden Elternteilen aufgeteilt werden."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Was ist der Alleinverdienerabsetzbetrag?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Der Alleinverdienerabsetzbetrag steht Alleinverdienern oder Alleinerziehern mit mindestens einem Kind zu. Er beträgt \u20ac 520 bei einem Kind, \u20ac 704 bei zwei Kindern und erhöht sich um \u20ac 232 für jedes weitere Kind. Voraussetzung ist, dass der Partner maximal \u20ac 6.312 pro Jahr verdient."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Was ist die Höchstbeitragsgrundlage?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Die Höchstbeitragsgrundlage (HBGL) 2026 beträgt \u20ac 6.060 pro Monat. Sozialversicherungsbeiträge werden nur bis zu diesem Betrag berechnet. Für den Teil des Gehalts, der über der HBGL liegt, fallen keine SV-Beiträge mehr an."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Was ist der Verkehrsabsetzbetrag?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Der Verkehrsabsetzbetrag (VAB) beträgt \u20ac 463 pro Jahr und steht jedem Arbeitnehmer automatisch zu. Er wird direkt von der berechneten Lohnsteuer abgezogen und soll die Fahrtkosten zum Arbeitsplatz pauschal abgelten."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Was ist das E-Card-Serviceentgelt?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Das E-Card-Serviceentgelt beträgt \u20ac 12,95 pro Jahr und wird für die elektronische Gesundheitskarte (e-Card) erhoben. Es wird einmal jährlich vom Gehalt abgezogen, üblicherweise im November."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Kann ich den Rechner auch für Teilzeitgehälter verwenden?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ja, geben Sie einfach Ihr monatliches Brutto-Teilzeitgehalt ein. Der Rechner berechnet das Nettogehalt auf Basis des angegebenen Bruttobetrags, unabhängig davon, ob es sich um ein Vollzeit- oder Teilzeitgehalt handelt. Alle Abzüge und Begünstigungen werden proportional berechnet."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Wo finde ich die offiziellen Steuertabellen?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Die offiziellen Steuertabellen und Sozialversicherungssätze werden vom Bundesministerium für Finanzen (BMF) auf bmf.gv.at veröffentlicht. Sozialversicherungsinformationen finden Sie auf sozialversicherung.at."
+        }
+      }
+    ]
+  })} />
+
 </Layout>
